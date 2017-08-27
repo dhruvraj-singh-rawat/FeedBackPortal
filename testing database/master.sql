@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2017 at 01:25 PM
+-- Generation Time: Aug 27, 2017 at 03:09 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -94,14 +94,23 @@ INSERT INTO `faculty` (`id`, `name`, `year`, `department`) VALUES
 --
 
 CREATE TABLE `feedback` (
-  `id` int(255) NOT NULL,
   `course_name` varchar(50) NOT NULL,
   `faculty` varchar(50) NOT NULL,
   `from_who` varchar(50) NOT NULL,
   `subject` varchar(50) NOT NULL,
   `feedback` longtext NOT NULL,
-  `ack_no` varchar(50) NOT NULL
+  `ack_no` varchar(50) NOT NULL,
+  `year` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`course_name`, `faculty`, `from_who`, `subject`, `feedback`, `ack_no`, `year`) VALUES
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', 'disco dancer59a2be626dbaa', ''),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c429c97fc', '123422'),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c449b75e8', '123422');
 
 -- --------------------------------------------------------
 
@@ -129,13 +138,6 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `faculty`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
