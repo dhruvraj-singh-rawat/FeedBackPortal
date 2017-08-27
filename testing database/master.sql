@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2017 at 12:10 PM
+-- Generation Time: Aug 27, 2017 at 01:25 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -94,12 +94,13 @@ INSERT INTO `faculty` (`id`, `name`, `year`, `department`) VALUES
 --
 
 CREATE TABLE `feedback` (
-  `id` int(255) DEFAULT NULL,
+  `id` int(255) NOT NULL,
   `course_name` varchar(50) NOT NULL,
   `faculty` varchar(50) NOT NULL,
   `from_who` varchar(50) NOT NULL,
   `subject` varchar(50) NOT NULL,
-  `feedback` longtext NOT NULL
+  `feedback` longtext NOT NULL,
+  `ack_no` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -128,6 +129,13 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `faculty`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
