@@ -186,10 +186,46 @@ $app->post('/api/login/', function(Request $request, Response $response){
 
 });
 
-
 // Retrieving Faculty Information of Particular Year ! 
 
-$app->get('/api/faculty/info/{year}', function(Request $request, Response $response){
+$app->get('/api/form/info/year_faculty/{department}/{year}', function(Request $request, Response $response){
+
+    $year = $request->getAttribute('year');
+    $department = $request->getAttribute('department');
+
+    $sql = "SELECT * FROM faculty WHERE year = '".$year."' AND department = '".$department."'";
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+        $stmt = $db->query($sql);
+
+        $json = array();
+        
+
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			$faculty = array(
+		        'name' => $row['name'],
+		        'year' => $row['year'],
+		        
+		    );
+		    array_push($json, $faculty);
+   
+		}
+		$db = null;
+
+		$jsonstring = json_encode($json);
+		echo $jsonstring; 
+
+        
+
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});
+
+$app->get('/api/form/info//{year}', function(Request $request, Response $response){
 
     $id = $request->getAttribute('year');
     $sql = "SELECT * FROM faculty WHERE year = '".$id."'";
@@ -223,6 +259,7 @@ $app->get('/api/faculty/info/{year}', function(Request $request, Response $respo
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
+
 
 
 // Get all Customers
