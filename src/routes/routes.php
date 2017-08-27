@@ -18,6 +18,7 @@ $app->add(function ($req, $res, $next) {
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 });    
 
+
 $app->post('/api/login/', function(Request $request, Response $response){
 
 	$email = $request->getParam('email');
@@ -186,13 +187,41 @@ $app->post('/api/login/', function(Request $request, Response $response){
 });
 
 
+// Retrieving Faculty Information of Particular Year ! 
 
-$app->get('/api/login/{email}/{otp}/{pos}', function(Request $request, Response $response){
+$app->get('/api/faculty/info/{year}', function(Request $request, Response $response){
 
+    $id = $request->getAttribute('year');
+    $sql = "SELECT * FROM faculty WHERE year = '".$id."'";
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+        $stmt = $db->query($sql);
 
+        $json = array();
+        
 
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			$faculty = array(
+		        'name' => $row['name'],
+		        'year' => $row['year'],
+		        
+		    );
+		    array_push($json, $faculty);
+   
+		}
+		$db = null;
 
+		$jsonstring = json_encode($json);
+		echo $jsonstring; 
 
+        
+
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
 });
 
 
