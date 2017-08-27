@@ -20,6 +20,7 @@ PHPMailer
 ## Deployment
 
 =========================================================================
+
 Login API format: [POST Request]
 
 http://localhost/feedbackportal/public/api/login/
