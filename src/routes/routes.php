@@ -265,6 +265,39 @@ $app->get('/api/form/info/faculty_course/{department}/{year}/{name_faculty}', fu
     }
 });
 
+// Implementing the course feedback API 
+
+$app->post('/api/form/feedback', function(Request $request, Response $response){
+
+    $faculty = $request->getParam('faculty');
+    $course_name = $request->getParam('course_name');
+    $from_who = $request->getParam('email');
+    $subject = $request->getParam('subject');
+    $feedback = $request->getParam('feedback');
+    $ack_no = $request->getParam('ack_no');
+    
+    $sql = "INSERT INTO feedback (faculty,course_name,from_who,subject,feedback,ack_no) VALUES
+    (:faculty,:course_name,:from_who,:subject,:feedback,:ack_no)";
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':faculty', $faculty);
+        $stmt->bindParam(':course_name',  $course_name);
+        $stmt->bindParam(':from_who',      $from_who);
+        $stmt->bindParam(':subject',      $subject);
+        $stmt->bindParam(':feedback',    $feedback);
+        $stmt->bindParam(':ack_no',       $ack_no);
+        
+        $stmt->execute();
+
+        echo '{"Response": {"status": 1}';
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});
 
 
 
