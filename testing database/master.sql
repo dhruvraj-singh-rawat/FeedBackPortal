@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2017 at 11:13 AM
+-- Generation Time: Aug 27, 2017 at 12:10 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -52,15 +52,17 @@ CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `course_name` varchar(50) NOT NULL,
   `year` int(10) NOT NULL,
-  `faculty` varchar(50) NOT NULL
+  `faculty` varchar(50) NOT NULL,
+  `department` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `course_name`, `year`, `faculty`) VALUES
-(1, 'ECE-1', 1, 'Sandeep Saini');
+INSERT INTO `courses` (`id`, `course_name`, `year`, `faculty`, `department`) VALUES
+(1, 'ECE-1', 1, 'Sandeep Saini', '2'),
+(2, 'Mathematics 1 ', 1, 'Sunil Kumar Gautam', '4');
 
 -- --------------------------------------------------------
 
@@ -80,10 +82,25 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `name`, `year`, `department`) VALUES
-(1, 'Sandeep Saini ', 1, '3'),
+(1, 'Sandeep Saini ', 1, '2'),
 (2, 'Sunil Kumar Gautam', 1, '5'),
-(3, 'Kapil Jainwal', 2, '3'),
-(4, 'Deepak Nair', 3, '3');
+(3, 'Kapil Jainwal', 2, '2'),
+(4, 'Deepak Nair', 3, '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(255) DEFAULT NULL,
+  `course_name` varchar(50) NOT NULL,
+  `faculty` varchar(50) NOT NULL,
+  `from_who` varchar(50) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `feedback` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -120,7 +137,7 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `faculty`
 --
