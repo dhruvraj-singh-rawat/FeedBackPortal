@@ -137,9 +137,13 @@ $app->post('/api/login/', function(Request $request, Response $response){
 	        		$stmt = $db->query($sql);
 	        		$count=$stmt->rowCount();
 
+	        		$stmt = $db->query($sql);
+        			$responser = $stmt->fetch(PDO::FETCH_ASSOC);
+
 	        		if ($count){
 
 	        					@$myObj->status = 5;
+	        					$myObj->name= $responser['name'];
 								$myObj->msg = "Successfully Logged In! ";
 								$myJSON = json_encode($myObj);
 								echo $myJSON;
@@ -155,9 +159,6 @@ $app->post('/api/login/', function(Request $request, Response $response){
 				    		echo $myJSON;
 
 	        		}
-
-
-
 
 	        }
 	        else{
@@ -178,8 +179,6 @@ $app->post('/api/login/', function(Request $request, Response $response){
 	    	} catch(PDOException $e){
 	        echo '{"error": {"text": '.$e->getMessage().'}';
 	    	}
-
-
 
     }
 
@@ -274,11 +273,12 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
     $from_who = $request->getParam('email');
     $subject = $request->getParam('subject');
     $feedback = $request->getParam('feedback');
+    $year = $request->getParam('year');
 
     $ack_no = $reference=uniqid();;
     
-    $sql = "INSERT INTO feedback (faculty,course_name,from_who,subject,feedback,ack_no) VALUES
-    (:faculty,:course_name,:from_who,:subject,:feedback,:ack_no)";
+    $sql = "INSERT INTO feedback (faculty,course_name,from_who,subject,feedback,ack_no,year) VALUES
+    (:faculty,:course_name,:from_who,:subject,:feedback,:ack_no,:year)";
     try{
         // Get DB Object
         $db = new db();
@@ -291,6 +291,7 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
         $stmt->bindParam(':subject',      $subject);
         $stmt->bindParam(':feedback',    $feedback);
         $stmt->bindParam(':ack_no',       $ack_no);
+        $stmt->bindParam(':year',       $year);
         
         $stmt->execute();
 
@@ -300,7 +301,44 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
     }
 });
 
+// Retrieve Faculty Feedbacks
 
+$app->get('/api/faculty/feedbacks/{faculty_name}', function(Request $request, Response $response){
+
+    $name = $request->getAttribute('faculty_name');
+    
+
+    $sql = "SELECT * FROM feedback WHERE year = '".$year."' AND department = '".$department."'";
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+        $stmt = $db->query($sql);
+
+        $json = array();
+        
+
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			$faculty = array(
+		        'name' => $row['name'],
+		        'year' => $row['year'],
+		        
+		    );
+		    array_push($json, $faculty);
+   
+		}
+		$db = null;
+
+		$jsonstring = json_encode($json);
+		echo $jsonstring; 
+
+        
+
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});
 
 // Get all Customers
 $app->get('/api/customers',function(Request $request, Response $response){
