@@ -32,7 +32,8 @@
                   <form class="login-form">
                   
                     <div class="email">
-                    <input ng-model="sendEmail" type="text" name="email" class="login-email" placeholder="Type your LNMIIT Email"/><b>@lnmiit.ac.in</b>
+                    <input ng-model="sendEmail" type="text" name="email" class="login-email" placeholder="Type your LNMIIT Email"/>
+                    
 
                     <button ng-click="sendOtp()" style="font-family: 'Raleway', sans-serif;background-color: rgb(52, 73, 94);" class="otp-button" type="submit">Send OTP</button>
                   </div>
