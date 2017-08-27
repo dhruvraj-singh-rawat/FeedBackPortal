@@ -56,8 +56,19 @@ Parameters Required are:
     email
     subject
     feedback
+    year
     
 ```
+=========================================================================
+
+Particular Faculty Feedback Retriever: [GET METHOD]
+http://localhost/feedbackportal/public/api/faculty/feedbacks/{faculty_name}
+
+Return of the API is as follows:-
+```
+[{"subject":"Poor Teaching Skills","feedback":"felt bored in class","course_name":"CP Programming","ack_no":"cp59a2be626dbaa"}]
+```
+
 ## Built With
 
 
