@@ -33,6 +33,10 @@ Faculy name for Particular Year and Department: [GET Request]
 
 http://localhost/feedbackportal/public/api/form/info/year_faculty/{department}/{year}
 
+Faculty Course Retriever API :[GET]
+
+http://localhost/feedbackportal/public/api/form/info/faculty_course/{department}/{year}/{Faculty_name}
+
 ## Built With
 
 
