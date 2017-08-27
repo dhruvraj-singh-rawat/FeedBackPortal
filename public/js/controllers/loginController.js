@@ -10,11 +10,12 @@ app.controller('loginApp', ['$scope', '$http', function($scope, $http) {
 			// username: $scope.sendEmail
 			// };
 			var email = $scope.sendEmail
-
-			$http.get($scope.sendEmail)
+			var indata = {'pos':1,'email':email};
+			$http.post('http://localhost/FeedBackPortal/public/api/login/' , indata)
 		    .then(function(response) {
-		    	console.log("otp generated succesfully");
-		        $scope.responsemsg = "otp generated succesfully";
+		    	console.log(response.data.msg);
+		    	console.log(response.data.status);
+		        $scope.responsemsg = response.data.msg;
 		    });
 		    
 		
