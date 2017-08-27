@@ -19,14 +19,19 @@ PHPMailer
 
 ## Deployment
 
-Login API format:
+Login API format: [POST Request]
 
 http://localhost/feedbackportal/public/api/login/
 
 Parameters Required are:
+```
 pos
 email
 otp
+```
+Faculy name for Particular Year and Department: [GET Request]
+
+http://localhost/feedbackportal/public/api/form/info/year_faculty/{department}/{year}
 
 ## Built With
 
