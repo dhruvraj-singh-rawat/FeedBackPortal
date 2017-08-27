@@ -34,7 +34,7 @@ otp
 ## Authors
 
 * **Dhruvraj Singh Rawat** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/dhruvrajrawat/)
-* **Shree Ram Bansal** - *Initial work* - [LinkedIn]()
+* **Shree Ram Bansal** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/shree-ram-b-a48786104/)
 
 
 
