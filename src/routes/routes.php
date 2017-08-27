@@ -305,10 +305,10 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
 
 $app->get('/api/faculty/feedbacks/{faculty_name}', function(Request $request, Response $response){
 
-    $name = $request->getAttribute('faculty_name');
+    $faculty_name = $request->getAttribute('faculty_name');
     
 
-    $sql = "SELECT * FROM feedback WHERE year = '".$year."' AND department = '".$department."'";
+    $sql = "SELECT * FROM feedback WHERE faculty = '".$faculty_name."'";
     try{
         // Get DB Object
         $db = new db();
@@ -320,12 +320,15 @@ $app->get('/api/faculty/feedbacks/{faculty_name}', function(Request $request, Re
         
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-			$faculty = array(
-		        'name' => $row['name'],
-		        'year' => $row['year'],
+			$feedbacks = array(
+
+				'subject' => $row['subject'],
+		        'feedback' => $row['feedback'],
+		        'course_name' => $row['course_name'],
+		        'ack_no' => $row['ack_no'],
 		        
 		    );
-		    array_push($json, $faculty);
+		    array_push($json, $feedbacks);
    
 		}
 		$db = null;
