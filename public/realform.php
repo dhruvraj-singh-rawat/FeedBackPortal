@@ -42,7 +42,7 @@
     <li><a href="#" class=""><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
      <li class="submenu active"> <a href="#"><i class="icon icon-th-list"></i> <span>Select Department</span> <span class="label label-important">5</span></a>
       <ul>
-        <li ng-repeat="dept in branches"><a id="branch-{{dept.id}}" href="realform.php?dept={{dept.id}}">
+        <li ng-repeat="dept in Department"><a id="branch-{{dept.id}}" href="realform.php?dept={{dept.id}}">
         {{dept.name}}</a></li>
       </ul>
     </li>
@@ -88,20 +88,21 @@
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                           <div class="form-group">
                             <label for="tb-fname">Select Year</label><br>
-                            <input type="radio" name="year" ng-model="formParams.year" value="one" required >I<br>
-                            <input type="radio" name="year" ng-model="formParams.year" value="two" required>II<br>
-                            <input type="radio" name="year" ng-model="formParams.year" value="three" required>III<br>
-                            <input  type="radio" name="year" ng-model="formParams.year" value="four" required>IV<br>
-                            <input type="radio" name="year" ng-model="formParams.year" value="pg" required>PG<br>
+                            <input type="radio" name="year" ng-model="formParams.year" value="1" required >I<br>
+                            <input type="radio" name="year" ng-model="formParams.year" value="2" required>II<br>
+                            <input type="radio" name="year" ng-model="formParams.year" value="3" required>III<br>
+                            <input  type="radio" name="year" ng-model="formParams.year" value="4" required>IV<br>
+                            <input type="radio" name="year" ng-model="formParams.year" value="5" required>PG<br>
 
                             <span style="color:red" ng-show="multiStepForm.year.$invalid">
-                            <span ng-show="multiStepForm.year.$untouched">Username is required.</span>
+                            <span ng-show="multiStepForm.year.$untouched">Year is required.</span>
                             </span>
                           </div>
                         </div>
                       </div>
-  
-                
+                      
+                      <input type="text" ng-model="formParams.dept">
+                      
                       <button type="button" class="btn btn-info" ng-click="back('')">Back</button>
                       <button type="button" class="btn btn-primary" ng-click="next('stage2')">Next</button>
                     </div>
@@ -110,7 +111,7 @@
                       <div class="form-group">
                         <label for="ta-body">Select Faculty</label>
                         <select required name="facultyname" ng-model="formParams.facultyname"> 
-                          <option ng-repeat="x in faculty_name" value="{{x.name}}">{{x.name}}</option>           
+                          <option ng-repeat="faculty in facultynames" ng-click="changeSub()" value="{{faculty.name}}">{{faculty.name}}</option>           
                         </select>
                       </div>
 

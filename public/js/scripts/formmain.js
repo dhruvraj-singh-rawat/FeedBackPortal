@@ -6,6 +6,7 @@ angular.module('formApp', [
 controller('formCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.formParams = {};
   $scope.stage = "";
+  $scope.formParams.dept = "3";
   $scope.formValidation = false;
   $scope.toggleJSONView = false;
   $scope.toggleFormErrorsView = false;
@@ -15,38 +16,38 @@ controller('formCtrl', ['$scope', '$http', function($scope, $http) {
     ccEmailList: []
   };
 
-  $scope.faculty_name = [
-        {
-          "name" : "ram",
-          "age" : "18"
-        },
-        {
-          "name" : "prabhat",
-          "age" : "19"
-        },
-        {
-          "name" : "dhruv",
-          "age" : "20"
-        }
-    ];
-   console.log($scope.faculty_name);
+  // $scope.faculty_name = [
+  //       {
+  //         "name" : "ram",
+  //         "age" : "18"
+  //       },
+  //       {
+  //         "name" : "prabhat",
+  //         "age" : "19"
+  //       },
+  //       {
+  //         "name" : "dhruv",
+  //         "age" : "20"
+  //       }
+  //   ];
+  //  console.log($scope.faculty_name);
 
-   $scope.course_name = [
-        {
-          "name" : "DBMS",
-          "code" : "18"
-        },
-        {
-          "name" : "DAA",
-          "code" : "19"
-        },
-        {
-          "name" : "CP",
-          "code" : "20"
-        }
-    ];
+   // $scope.course_name = [
+   //      {
+   //        "name" : "DBMS",
+   //        "code" : "18"
+   //      },
+   //      {
+   //        "name" : "DAA",
+   //        "code" : "19"
+   //      },
+   //      {
+   //        "name" : "CP",
+   //        "code" : "20"
+   //      }
+   //  ];
 
-    $scope.branches = [
+    $scope.Department = [
       {
         "name":"CSE",
         "id":"1"
@@ -56,16 +57,20 @@ controller('formCtrl', ['$scope', '$http', function($scope, $http) {
         "id":"2"
       },
       {
-        "name":"CCE",
+        "name":"ME",
         "id":"3"
       },
       {
-        "name":"ME",
+        "name":"Maths",
         "id":"4"
       },
       {
-        "name":"MME",
+        "name":"HSS",
         "id":"5"
+      },
+      {
+        "name":"Physics",
+        "id":"6"
       }
 
     ];
@@ -80,7 +85,9 @@ controller('formCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.next = function (stage) {
     //$scope.direction = 1;
     //$scope.stage = stage;
-
+    //$scope.year = $('input:radio:checked').attr('value');
+    var dept = 3;
+    var year = $scope.formParams.year;
     $scope.formValidation = true;
 
     if ($scope.multiStepForm.$valid) {
@@ -88,7 +95,30 @@ controller('formCtrl', ['$scope', '$http', function($scope, $http) {
       $scope.stage = stage;
       $scope.formValidation = false;
     }
+    if(stage == "stage2"){
+      console.log(dept);
+      console.log(year);
+
+      $http.get('http://localhost/FeedBackPortal/public/api/form/info/year_faculty/'+dept+'/'+year)
+        .then(function(response) {
+            $scope.facultynames = response.data;
+            console.log(response.data);
+        });
+    }
   };
+  $scope.changeSub = function(){
+      var dept = 3;
+      var year = $scope.formParams.year;
+      var facultyname = $scope.formParams.facultyname;
+      
+
+
+
+  };
+
+
+
+
 
   $scope.back = function (stage) {
     $scope.direction = 0;
