@@ -19,6 +19,8 @@ $app->add(function ($req, $res, $next) {
 });    
 
 
+
+
 $app->post('/api/login/', function(Request $request, Response $response){
 
 	$email = $request->getParam('email');
@@ -294,10 +296,30 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
         $stmt->bindParam(':year',       $year);
         
         $stmt->execute();
+        $json = array();
 
-        echo '{"Response": {"status": 1}';
+			$feedback = array(
+		        'status' => 1,
+		        'msg' => 'Successfully Submitted your Feedback :) ',
+		        		        
+		    );
+
+		    array_push($json, $feedback);
+		    $jsonstring = json_encode($json);
+			echo $jsonstring; 
+
     } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
+
+    			$json = array();
+        		$feedback = array(
+		        'status' => 0,
+		        'msg' => 'Something Went Wrong! Please Try again later :( ',
+		        		        
+		    );
+
+		    array_push($json, $feedback);
+		    $jsonstring = json_encode($json);
+			echo $jsonstring; 
     }
 });
 
