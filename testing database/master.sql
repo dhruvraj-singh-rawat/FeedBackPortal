@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2017 at 03:09 PM
+-- Generation Time: Aug 27, 2017 at 03:43 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -100,17 +100,18 @@ CREATE TABLE `feedback` (
   `subject` varchar(50) NOT NULL,
   `feedback` longtext NOT NULL,
   `ack_no` varchar(50) NOT NULL,
-  `year` varchar(50) NOT NULL
+  `year` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `feedback`
 --
 
-INSERT INTO `feedback` (`course_name`, `faculty`, `from_who`, `subject`, `feedback`, `ack_no`, `year`) VALUES
-('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', 'disco dancer59a2be626dbaa', ''),
-('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c429c97fc', '123422'),
-('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c449b75e8', '123422');
+INSERT INTO `feedback` (`course_name`, `faculty`, `from_who`, `subject`, `feedback`, `ack_no`, `year`, `id`) VALUES
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', 'disco dancer59a2be626dbaa', '', 1),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c429c97fc', '123422', 2),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c449b75e8', '123422', 3);
 
 -- --------------------------------------------------------
 
@@ -140,6 +141,12 @@ ALTER TABLE `faculty`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -152,7 +159,12 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
