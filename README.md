@@ -33,8 +33,8 @@ otp
 
 ## Authors
 
-* **Dhruvraj Singh Rawat** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Shree Ram Bansal** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Dhruvraj Singh Rawat** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/dhruvrajrawat/)
+* **Shree Ram Bansal** - *Initial work* - [LinkedIn]()
 
 
 
