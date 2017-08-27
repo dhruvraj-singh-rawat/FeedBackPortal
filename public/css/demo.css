@@ -1,0 +1,262 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@font-face {
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	background: #34495e;
+}
+header{
+	display:block;
+	padding-bottom:2%;
+}
+header img{
+  position: relative;
+  display: block;
+  width: 10%;
+  height: auto;
+  float: left;
+}
+header h1
+{   font-size:24px;
+    position: relative;
+    display: block;
+    width: 50%;
+    float:left;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom:;
+}
+header i{
+	position:relative;
+	width:20%;
+	float:right;
+	font-weight:bold;
+	top:60px;
+	font-size:15px;
+}
+header i:hover{
+	color:black;
+}
+
+.login-page {
+  position: relative;
+  padding: 8% 0 0;
+}
+.form {
+  position: relative;
+  z-index: 0;
+  background: #FFFFFF;
+  margin: 0 auto;
+  padding: 10px 35px 35px;
+  text-align: center;
+  margin-top:10%;
+  width:50%;
+  height:auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form h2{
+	color:#5F6F81;
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form .domain{
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background:#030F1F;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  margin-top: 10px;
+  color: #FFFFFF;
+  font-size: 1.2em;
+  font-weight: bold;
+  border:1px solid #030F1F;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form select{
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-bottom:2%;
+  padding: 2px;
+}
+.form .otp-button{
+  position: relative;
+  width: auto;
+  font-size: 1.1em;
+  float: right;
+  bottom: 10px;
+}
+.form textarea{
+  position: relative;
+  width: 100%;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background:#030F0F;
+  color:#fff;
+  border:1px solid #030F1F;
+}
+.form .login-email{
+  position: relative;
+  width: 50%;
+}
+.form .email{
+  position: relative;
+  right:7%;
+}
+.rules-features ul{
+  text-align: left;
+  font-weight:bold;
+}
+
+.container > header,
+.codrops-top {
+	color: #fff;
+	font-family: 'Lato', Arial, sans-serif;
+}
+
+.container > header {
+	margin: 0 auto;
+	background: rgba(0,0,0,0.05);
+}
+
+.container > header a {
+	color: #566473;
+	text-decoration: none;
+	outline: none;
+}
+
+.container > header a:hover {
+	color: #4f7bab;
+}
+
+.container > header h1 {
+	font-size: 3.2em;
+	line-height: 1.5;
+	margin: 0;
+	font-weight: 300;
+}
+
+.container > header span {
+	display: block;
+	font-size: 55%;
+	color: #74818e;
+	padding: 0 0 0.6em 0.1em;
+}
+
+/* To Navigation Style */
+.codrops-top {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.6);
+	text-transform: uppercase;
+	width: 100%;
+	font-size: 0.69em;
+}
+
+.codrops-top a {
+	text-decoration: none;
+	padding: 0 5px;
+	letter-spacing: 0.1em;
+	color: #888;
+	display: inline-block;
+}
+
+.codrops-top a:hover {
+	background: rgba(255,255,255,0.95);
+	color: #333;
+}
+
+.codrops-top span.right {
+	float: right;
+}
+
+.codrops-top span.right a {
+	float: left;
+	display: block;
+}
+
+.codrops-icon:before {
+	font-family: 'codropsicons';
+	margin: 0 4px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.codrops-icon-drop:before {
+	content: "\e001";
+}
+
+.codrops-icon-prev:before {
+	content: "\e004";
+}
+
+/* Demo Buttons Style */
+.codrops-demos {
+	padding-top: 1em;
+	font-size: 0.9em;
+}
+
+.codrops-demos a {
+	text-decoration: none;
+	outline: none;
+	display: inline-block;
+	margin: 0.5em;
+	padding: 0.7em 1.1em;
+	border: 3px solid #b1aea6;
+	color: #b1aea6;
+	font-weight: 700;
+}
+
+.codrops-demos a:hover,
+.codrops-demos a.current-demo,
+.codrops-demos a.current-demo:hover {
+	border-color: #89867e;
+	color: #89867e;
+}
+
+@media screen and (max-width: 1025px) {
+	.container > header {
+		margin: 0 auto;
+		padding: 120px 50px;
+		font-size: 70%;
+		text-align: right;
+	}
+}
+
+@media screen and (max-width: 740px) {
+
+	.codrops-icon span {
+		display: none;
+	}
+
+}
