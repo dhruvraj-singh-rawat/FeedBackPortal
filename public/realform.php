@@ -42,7 +42,7 @@
     <li><a href="#" class=""><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
      <li class="submenu active"> <a href="#"><i class="icon icon-th-list"></i> <span>Select Department</span> <span class="label label-important">5</span></a>
       <ul>
-        <li ng-repeat="dept in Department"><a id="branch-{{dept.id}}" href="realform.php?dept={{dept.id}}">
+        <li ng-repeat="dept in Department"><a id="branch-{{dept.id}}" href="#" ng-click="changedept(dept.id,dept.name)">
         {{dept.name}}</a></li>
       </ul>
     </li>
@@ -79,6 +79,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <p>Welcome to the form.</p>
+                          <h1>Welcome to {{deptname}} Department</h1>
                           <button type="button" class="btn btn-primary" ng-click="next('stage1')">Start</button>
                         </div>
                       </div>
@@ -110,15 +111,16 @@
                     <div class="animate-switch" ng-switch-when="stage2">
                       <div class="form-group">
                         <label for="ta-body">Select Faculty</label>
-                        <select required name="facultyname" ng-model="formParams.facultyname"> 
-                          <option ng-repeat="faculty in facultynames" ng-click="changeSub()" value="{{faculty.name}}">{{faculty.name}}</option>           
+                        <select required name="facultyname" ng-model="formParams.facultyname"
+                        ng-change="changeSub()"> 
+                          <option ng-repeat="faculty in facultynames" value="{{faculty.name}}">{{faculty.name}}</option>           
                         </select>
                       </div>
 
                       <div class="form-group">
                         <label for="ta-body">Select Course</label>
                         <select required name="coursename" ng-model="formParams.coursename">
-                            <option ng-repeat="x in course_name">{{x.name}}</option>
+                            <option ng-repeat="course in coursenames">{{course.course_name}}</option>
                         </select>
                       </div>
                       <button type="button" class="btn btn-info" ng-click="back('stage1')">Back</button>

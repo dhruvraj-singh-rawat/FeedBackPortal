@@ -1,20 +1,22 @@
 'use strict';
 
-angular.module('formApp', [
-  'ngAnimate'
-]).
-controller('formCtrl', ['$scope', '$http', function($scope, $http) {
+var app = angular.module('formApp', ['ngAnimate']);
+app.controller('formCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.formParams = {};
   $scope.stage = "";
-  $scope.formParams.dept = "3";
   $scope.formValidation = false;
   $scope.toggleJSONView = false;
   $scope.toggleFormErrorsView = false;
+  $scope.dept = "1";
+  $scope.deptname = "CSE";
 
-  $scope.formParams = {
-    ccEmail: '',
-    ccEmailList: []
-  };
+  $scope.changedept = function(dept,deptname){
+    $scope.dept = dept;
+    $scope.deptname = deptname;
+    console.log(dept);
+    console.log(deptname);
+    $scope.reset();
+  }
 
   // $scope.faculty_name = [
   //       {
@@ -86,7 +88,7 @@ controller('formCtrl', ['$scope', '$http', function($scope, $http) {
     //$scope.direction = 1;
     //$scope.stage = stage;
     //$scope.year = $('input:radio:checked').attr('value');
-    var dept = 3;
+    var dept = $scope.dept;
     var year = $scope.formParams.year;
     $scope.formValidation = true;
 
@@ -107,11 +109,15 @@ controller('formCtrl', ['$scope', '$http', function($scope, $http) {
     }
   };
   $scope.changeSub = function(){
-      var dept = 3;
+      var dept = $scope.dept;
       var year = $scope.formParams.year;
       var facultyname = $scope.formParams.facultyname;
-      
 
+      $http.get('http://localhost/FeedBackPortal/public/api/form/info/faculty_course/'+dept+'/'+year+'/'+facultyname)
+        .then(function(response) {
+            $scope.coursenames = response.data;
+            console.log(response.data);
+        });
 
 
   };
