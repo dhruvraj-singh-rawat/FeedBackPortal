@@ -108,6 +108,8 @@ app.controller('formCtrl', ['$scope', '$http', function($scope, $http) {
         });
     }
   };
+
+
   $scope.changeSub = function(){
       var dept = $scope.dept;
       var year = $scope.formParams.year;
@@ -132,36 +134,62 @@ app.controller('formCtrl', ['$scope', '$http', function($scope, $http) {
   };
 
   // Post to desired exposed web service.
-  $scope.submitForm = function () {
-    var wsUrl = "someURL";
-
+  $scope.submitForm = function(){
+    var wsUrl = "http://localhost/FeedBackPortal/public/api/form/feedback";
+    var fname = $scope.formParams.facultyname;
+    var cname = $scope.formParams.coursename;
+    var email = "ram@gmail.com";
+    var feedback_subject = $scope.formParams.feedbacktitle;
+    var feedback = $scope.formParams.feedbackcomment;
+    var year = $scope.formParams.year;
+    var indata = {'faculty':fname,'course_name':cname,'email':email,'subject':feedback_subject,'feedback':feedback,'year':year};
     // Check form validity and submit data using $http
     if ($scope.multiStepForm.$valid) {
       $scope.formValidation = false;
+      console.log(indata);
 
-      $http({
-        method: 'POST',
-        url: wsUrl,
-        data: JSON.stringify($scope.formParams)
-      }).then(function successCallback(response) {
-        if (response
-          && response.data
-          && response.data.status
-          && response.data.status === 'success') {
-          $scope.stage = "success";
-        } else {
-          if (response
-            && response.data
-            && response.data.status
-            && response.data.status === 'error') {
+      $http.post(wsUrl,indata)
+        .success(function(response) {
+            console.log("hello bhai");
+            // console.log(response);
+            // console.log(response.data.status);
+            console.log(response.msg);
+            console.log(response);
+            if (response.status == 1) {
+            console.log("success via 2");
             $scope.stage = "success";
+          } else {
+            if (response.status == 0) {
+              $scope.stage = "error";
+            }
           }
-        }
-      }, function errorCallback(response) {
-        $scope.stage = "success";
-        console.log(response);
-      });
-    }
+
+        });
+
+      // $http({
+      //   method: 'POST',
+      //   url: wsUrl,
+      //   data: indata
+      // }).then(function successCallback(response) {
+      //   if (response
+      //     && response.data
+      //     && response.data.status
+      //     && response.data.status === 'success') {
+      //     console.log("success via 2");
+      //     $scope.stage = "success";
+      //   } else {
+      //     if (response
+      //       && response.data
+      //       && response.data.status
+      //       && response.data.status === 'error') {
+      //       $scope.stage = "error";
+      //     }
+      //   }
+      // }, function errorCallback(response) {
+      //   $scope.stage = "error";
+      //   console.log(response.data);
+      // });
+     }
   };
 
   $scope.reset = function() {
