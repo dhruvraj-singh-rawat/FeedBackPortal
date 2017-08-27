@@ -225,10 +225,13 @@ $app->get('/api/form/info/year_faculty/{department}/{year}', function(Request $r
     }
 });
 
-$app->get('/api/form/info//{year}', function(Request $request, Response $response){
+$app->get('/api/form/info/faculty_course/{department}/{year}/{name_faculty}', function(Request $request, Response $response){
 
-    $id = $request->getAttribute('year');
-    $sql = "SELECT * FROM faculty WHERE year = '".$id."'";
+    $year = $request->getAttribute('year');
+    $department = $request->getAttribute('department');
+    $name_faculty = $request->getAttribute('name_faculty');
+    
+    $sql = "SELECT * FROM courses WHERE year = '".$year."' AND department = '".$department."' AND faculty= '".$name_faculty."'";
     try{
         // Get DB Object
         $db = new db();
@@ -240,12 +243,14 @@ $app->get('/api/form/info//{year}', function(Request $request, Response $respons
         
 
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-			$faculty = array(
-		        'name' => $row['name'],
+			$courses = array(
+		        'faculty' => $row['faculty'],
 		        'year' => $row['year'],
+		        'course_name' => $row['course_name'],
+
 		        
 		    );
-		    array_push($json, $faculty);
+		    array_push($json, $courses);
    
 		}
 		$db = null;
@@ -259,6 +264,7 @@ $app->get('/api/form/info//{year}', function(Request $request, Response $respons
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
+
 
 
 
