@@ -37,6 +37,20 @@ Faculty Course Retriever API :[GET]
 
 http://localhost/feedbackportal/public/api/form/info/faculty_course/{department}/{year}/{Faculty_name}
 
+
+FeedBack API: [POST Request]
+http://localhost/feedbackportal/public/api/form/feedback
+
+Parameters Required are:
+```
+    faculty
+    course_name
+    email
+    subject
+    feedback
+    ack_no
+
+```
 ## Built With
 
 
