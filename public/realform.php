@@ -40,9 +40,10 @@
   <a href="#" class="visible-phone"><i class="icon icon-file"></i>Menu</a>
   <ul>
     <li><a href="#" class=""><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-     <li class="submenu active"> <a href="#"><i class="icon icon-th-list"></i> <span>Faculty</span> <span class="label label-important">5</span></a>
+     <li class="submenu active"> <a href="#"><i class="icon icon-th-list"></i> <span>Select Department</span> <span class="label label-important">5</span></a>
       <ul>
-        <li ng-repeat="branch in branches"><a id="branch-{{branch.id}}"" href="">{{branch.name}}</a></li>
+        <li ng-repeat="dept in branches"><a id="branch-{{dept.id}}" href="realform.php?dept={{dept.id}}">
+        {{dept.name}}</a></li>
       </ul>
     </li>
     <li><a href="chat.html"><i class="icon icon-tint"></i> <span>Chat</span></a></li>

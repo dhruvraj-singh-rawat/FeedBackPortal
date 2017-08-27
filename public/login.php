@@ -42,7 +42,7 @@
                   </div>
 
                     <input ng-model="typeOtp" type="password" placeholder="Type Your OTP" name="otp"/>
-					<div class="control-group">
+					<!-- <div class="control-group">
               <b><label style="color: rgb(52, 73, 94);display: inline-block;class="control-label">Select Type</label></b>
               <br>&nbsp;
               <div  id="selectType" class="controls">
@@ -53,7 +53,7 @@
                   <input type="radio" name="radio" value="student" />
                   Student</label>
               </div>
-            </div>
+            </div> -->
                     <button ng-click="submit()" style="font-family: 'Raleway', sans-serif; background-color: rgb(52, 73, 94);"><b>Submit<b></button>
                   </form>
               </div>
