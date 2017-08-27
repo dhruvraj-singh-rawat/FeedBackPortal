@@ -274,7 +274,8 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
     $from_who = $request->getParam('email');
     $subject = $request->getParam('subject');
     $feedback = $request->getParam('feedback');
-    $ack_no = $request->getParam('ack_no');
+
+    $ack_no = $reference=uniqid();;
     
     $sql = "INSERT INTO feedback (faculty,course_name,from_who,subject,feedback,ack_no) VALUES
     (:faculty,:course_name,:from_who,:subject,:feedback,:ack_no)";
