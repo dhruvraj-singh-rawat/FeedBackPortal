@@ -19,7 +19,23 @@ $app->add(function ($req, $res, $next) {
 });    
 
 
+function postman($to,$subject,$mail_body){
+	$mail = new PHPMailer();
+	$mail->isSMTP();
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = 'ssl';
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = '465';
+	$mail->isHTML();
+	$mail->Username = 'feedbacklnmiit@gmail.com';
+	$mail->Password = 'helloworld12345';
+	$mail->SetFrom('no-reply@gmail.com');
+	$mail->Subject = $subject;
+	$mail->Body = $mail_body;
+	$mail->AddAddress($to);
 
+	$mail->Send();
+}
 
 $app->post('/api/login/', function(Request $request, Response $response){
 
@@ -46,7 +62,7 @@ $app->post('/api/login/', function(Request $request, Response $response){
 	        // Connect
 	        $db = $db->connect();
 	        $stmt = $db->query($sql);
-	        $responce = $stmt->fetch(PDO::FETCH_OBJ);
+	        $responce = $stmt->fetch(PDO::FETCH_ASSOC);
 
 	        $db = null;
 	        $count=$stmt->rowCount();
@@ -61,6 +77,10 @@ $app->post('/api/login/', function(Request $request, Response $response){
 
 					$myJSON = json_encode($myObj);
 
+					$to=$email;
+	    			$subject='Re-Feedback Portal Login OTP';
+	    			$mail_body="I am resending you, your OTP for the Feedback Portal.Your OTP is ".$responce['otp'];
+	    			postman($to,$subject,$mail_body);
 		    		echo $myJSON;
 
 	    	}
@@ -78,6 +98,12 @@ $app->post('/api/login/', function(Request $request, Response $response){
 	    		$stmt->bindParam(':email', $email);
 
 	    		if ($stmt->execute()){
+
+	    			$to=$email;
+	    			$subject='Feedback Portal Login OTP';
+	    			$mail_body="Your Secure OTP for the Feedback Portal Login is ".$otp_internal;
+
+	    			postman($to,$subject,$mail_body);
 
 				    @$myObj->status = 1;
 					$myObj->msg = "OTP Generated Successfully";
@@ -98,8 +124,6 @@ $app->post('/api/login/', function(Request $request, Response $response){
 	    			}
 
 		    	}
-
-
     	}
     	else{
 
@@ -306,6 +330,11 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
 
 		    array_push($json, $feedback);
 		    $jsonstring = json_encode($json);
+
+			$subject='Feedback Submitted Successfully';
+			$mail_body="Your Feedback for ".$course_name." is Successfully Submitted.Your Acknowledgement no is ".$ack_no;
+	    	postman($from_who,$subject,$mail_body);
+
 			echo $jsonstring; 
 
     } catch(PDOException $e){
