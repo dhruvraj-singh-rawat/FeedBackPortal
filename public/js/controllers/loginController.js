@@ -47,7 +47,7 @@ app.controller('loginApp', ['$scope', '$http','$location', function($scope, $htt
 		    	else if(response.data.status == 5){
 		    		console.log("faculty login");
 
-		    		window.location.href= baseUrl+"admindash.php?"+response.data.name;
+		    		window.location.href= baseUrl+"admindash.php?fname="+response.data.name;
 		    	}
 		    	else{
 		    		console.log("other login");
