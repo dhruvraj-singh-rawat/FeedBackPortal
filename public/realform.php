@@ -102,8 +102,6 @@
                         </div>
                       </div>
                       
-                      <input type="text" ng-model="formParams.dept">
-                      
                       <button type="button" class="btn btn-info" ng-click="back('')">Back</button>
                       <button type="button" class="btn btn-primary" ng-click="next('stage2')">Next</button>
                     </div>
