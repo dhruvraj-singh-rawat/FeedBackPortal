@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2017 at 03:43 PM
+-- Generation Time: Aug 28, 2017 at 09:19 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -111,7 +111,15 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`course_name`, `faculty`, `from_who`, `subject`, `feedback`, `ack_no`, `year`, `id`) VALUES
 ('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', 'disco dancer59a2be626dbaa', '', 1),
 ('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c429c97fc', '123422', 2),
-('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c449b75e8', '123422', 3);
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2c449b75e8', '123422', 3),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2cd3bb286f', '123422', 4),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2cd3ca2981', '123422', 5),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a2d4894dc84', '123422', 6),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a30dea35e3c', '123422', 7),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a30e644fc7b', '123422', 8),
+('disco dancer', 'baba sehgal', 'upar wala', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a30ea28f650', '123422', 9),
+('disco dancer', 'baba sehgal', '15uec022@lnmiit.ac.in', 'dance karoge', 'beusbfuiebf senfjefnenf', '59a30eeb72787', '123422', 10),
+('disco dancer', 'baba sehgal', '15uec022@lnmiit.ac.in', 'dance karoge', 'beusbfuiebf senfjefnenf ', '59a463a88fc14', '123422', 11);
 
 -- --------------------------------------------------------
 
@@ -123,6 +131,27 @@ CREATE TABLE `otp_temp` (
   `email` varchar(50) NOT NULL,
   `otp` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tokens`
+--
+
+CREATE TABLE `tokens` (
+  `token_no` varchar(100) NOT NULL,
+  `email` varchar(1000) NOT NULL,
+  `start_time` int(50) NOT NULL,
+  `end_time` int(50) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tokens`
+--
+
+INSERT INTO `tokens` (`token_no`, `email`, `start_time`, `end_time`, `id`) VALUES
+('f6b58b9ddf7e0c38', '15uec022@lnmiit.ac.in', 1503943261, 1503946861, 8);
 
 --
 -- Indexes for dumped tables
@@ -147,6 +176,12 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tokens`
+--
+ALTER TABLE `tokens`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -164,7 +199,12 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `tokens`
+--
+ALTER TABLE `tokens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
