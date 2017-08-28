@@ -237,11 +237,11 @@ $app->post('/api/login/', function(Request $request, Response $response){
 
 // Retrieving Faculty Information of Particular Year ! 
 
-$app->get('/api/form/info/year_faculty/{department}/{year}/{toki}/{email}', function(Request $request, Response $response){
+$app->get('/api/form/info/year_faculty/{department}/{year}/{token}/{email}', function(Request $request, Response $response){
 
     $year = $request->getAttribute('year');
     $department = $request->getAttribute('department');
-    $token = $request->getAttribute('toki');
+    $token = $request->getAttribute('token');
     $email = $request->getAttribute('email');
 
     $sql = "SELECT * FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
@@ -331,12 +331,12 @@ $app->get('/api/form/info/year_faculty/{department}/{year}/{toki}/{email}', func
 
 });
 
-$app->get('/api/form/info/faculty_course/{department}/{year}/{name_faculty}/{toki}/{email}', function(Request $request, Response $response){
+$app->get('/api/form/info/faculty_course/{department}/{year}/{name_faculty}/{token}/{email}', function(Request $request, Response $response){
 
     $year = $request->getAttribute('year');
     $department = $request->getAttribute('department');
     $name_faculty = $request->getAttribute('name_faculty');
-    $token = $request->getAttribute('toki');
+    $token = $request->getAttribute('token');
     $email = $request->getAttribute('email');
 
     $sql = "SELECT * FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
@@ -438,7 +438,7 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
     $year = $request->getParam('year');
 
     $email = $request->getParam('email');
-    $token = $request->getParam('toki');
+    $token = $request->getParam('token');
 
     $ack_no = $reference=uniqid();;
 
