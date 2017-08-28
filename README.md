@@ -36,13 +36,13 @@ otp
 
 Faculy name for Particular Year and Department: [GET Request]
 
-http://localhost/feedbackportal/public/api/form/info/year_faculty/{department}/{year}/{toki}/{email}
+http://localhost/feedbackportal/public/api/form/info/year_faculty/{department}/{year}/{token}/{email}
 
 =========================================================================
 
 Faculty Course Retriever API :[GET]
 
-http://localhost/feedbackportal/public/api/form/info/faculty_course/{department}/{year}/{name_faculty}/{toki}/{email}
+http://localhost/feedbackportal/public/api/form/info/faculty_course/{department}/{year}/{name_faculty}/{token}/{email}
 
 =========================================================================
 
