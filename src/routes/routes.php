@@ -203,6 +203,7 @@ $app->post('/api/login/', function(Request $request, Response $response){
 
 	        				@$myObj->status = 3;
 							$myObj->msg = "Successfully Logged In! ";
+							@$myObj->token = $token;
 
 							$myJSON = json_encode($myObj);
 
