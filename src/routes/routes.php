@@ -548,44 +548,101 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
 
 // Retrieve Faculty Feedbacks
 
-$app->get('/api/faculty/feedbacks/{faculty_name}', function(Request $request, Response $response){
+$app->get('/api/faculty/feedbacks/{faculty_name}/{token}/{email}', function(Request $request, Response $response){
 
     $faculty_name = $request->getAttribute('faculty_name');
+
+    $email = $request->getParam('email');
+    $token = $request->getParam('token');
+
+    $ack_no = $reference=uniqid();;
+
+    $sql = "SELECT * FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
+    $db = new db();
+        // Connect
+    $db = $db->connect();
+    $stmt = $db->query($sql);
+
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	
+        $email_original = $row['email'];
+        $token_original = $row['token_no'];
+        $end_time = $row['end_time'];
+                
+	}
+
+    $time_current=time();
+
+    if (@($time_current<$end_time) && ($email==$email_original) && @($token==$token_original)){
+
+    	 $sql = "SELECT * FROM feedback WHERE faculty = '".$faculty_name."'";
+    	 try{
+	        // Get DB Object
+	        $db = new db();
+	        // Connect
+	        $db = $db->connect();
+	        $stmt = $db->query($sql);
+
+	        $json = array();
+	        
+
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+				$feedbacks = array(
+
+					'subject' => $row['subject'],
+			        'feedback' => $row['feedback'],
+			        'course_name' => $row['course_name'],
+			        'ack_no' => $row['ack_no'],
+			        
+			    );
+			    array_push($json, $feedbacks);
+	   
+			}
+			$db = null;
+
+			$jsonstring = json_encode($json);
+			echo $jsonstring; 
+
+	        
+
+		   } catch(PDOException $e){
+		        echo '{"error": {"text": '.$e->getMessage().'}';
+		}
+
+
+    }
+	 else{
+
+	    	if (@($time_current<$end_time)){
+
+	    		$sql = "DELETE FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
+	    		$db = new db();
+	    		$db = $db->connect();
+	    		$stmt = $db->query($sql);
+	    		$db=null;
+
+	    		@$myObj->status = 2;
+				$myObj->msg = "Your Session is expired.Please Login Again!";
+				$myJSON = json_encode($myObj);
+
+				echo $myJSON;
+
+	    	}
+	    	else{
+
+	    		@$myObj->status = 0;
+				$myObj->msg = "Sorry Mate, Session Spoofing doesn't work here ;) !";
+				$myJSON = json_encode($myObj);
+
+				echo $myJSON;
+
+	    	}
+
+
+	    }
     
 
-    $sql = "SELECT * FROM feedback WHERE faculty = '".$faculty_name."'";
-    try{
-        // Get DB Object
-        $db = new db();
-        // Connect
-        $db = $db->connect();
-        $stmt = $db->query($sql);
-
-        $json = array();
-        
-
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-			$feedbacks = array(
-
-				'subject' => $row['subject'],
-		        'feedback' => $row['feedback'],
-		        'course_name' => $row['course_name'],
-		        'ack_no' => $row['ack_no'],
-		        
-		    );
-		    array_push($json, $feedbacks);
    
-		}
-		$db = null;
-
-		$jsonstring = json_encode($json);
-		echo $jsonstring; 
-
-        
-
-    } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
-    }
 });
 
 // Get all Customers
