@@ -63,15 +63,17 @@ Parameters Required are:
 =========================================================================
 
 Particular Faculty Feedback Retriever: [GET METHOD]
-http://localhost/feedbackportal/public/api/faculty/feedbacks/{faculty_name}
+http://localhost/feedbackportal/public/api/faculty/feedbacks/{faculty_name}/{token}/{email}
 
 Return of the API is as follows:-
 ```
 [{"subject":"Poor Teaching Skills","feedback":"felt bored in class","course_name":"CP Programming","ack_no":"cp59a2be626dbaa"}]
 ```
 =========================================================================
+
 LOGOUT API: [GET METHOD]
-http://localhost/feedbackportal/public//api/logout/{token}/{email}
+
+http://localhost/feedbackportal/public/api/logout/{token}/{email}
 
 
 ## Built With
