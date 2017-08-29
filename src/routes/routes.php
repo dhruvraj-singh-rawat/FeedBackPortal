@@ -543,7 +543,6 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
 
 	    }
       
-   
 });
 
 // Retrieve Faculty Feedbacks
@@ -552,10 +551,8 @@ $app->get('/api/faculty/feedbacks/{faculty_name}/{token}/{email}', function(Requ
 
     $faculty_name = $request->getAttribute('faculty_name');
 
-    $email = $request->getParam('email');
-    $token = $request->getParam('token');
-
-    $ack_no = $reference=uniqid();;
+    $token = $request->getAttribute('token');
+    $email = $request->getAttribute('email');
 
     $sql = "SELECT * FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
     $db = new db();
