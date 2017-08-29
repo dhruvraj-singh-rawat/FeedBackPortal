@@ -302,7 +302,7 @@ $app->get('/api/form/info/year_faculty/{department}/{year}/{token}/{email}', fun
 
     	if (@($time_current<$end_time)){
 
-    		$sql = "DELETE FROM tokens WHERE email = '".$email."'";
+    		$sql = "DELETE FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
     		$db = new db();
     		$db = $db->connect();
     		$stmt = $db->query($sql);
@@ -398,7 +398,7 @@ $app->get('/api/form/info/faculty_course/{department}/{year}/{name_faculty}/{tok
 
 	    	if (@($time_current<$end_time)){
 
-	    		$sql = "DELETE FROM tokens WHERE email = '".$email."'";
+	    		$sql = "DELETE FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
 	    		$db = new db();
 	    		$db = $db->connect();
 	    		$stmt = $db->query($sql);
@@ -517,7 +517,7 @@ $app->post('/api/form/feedback', function(Request $request, Response $response){
 
 	    	if (@($time_current<$end_time)){
 
-	    		$sql = "DELETE FROM tokens WHERE email = '".$email."'";
+	    		$sql = "DELETE FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
 	    		$db = new db();
 	    		$db = $db->connect();
 	    		$stmt = $db->query($sql);
@@ -589,8 +589,33 @@ $app->get('/api/faculty/feedbacks/{faculty_name}', function(Request $request, Re
 });
 
 // Get all Customers
-$app->get('/api/customers',function(Request $request, Response $response){
+$app->get('/api/logout/{token}/{email}',function(Request $request, Response $response){
+
+	$token = $request->getAttribute('token');
+    $email = $request->getAttribute('email');
+
+	$sql = "DELETE FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
+	$db = new db();
+	$db = $db->connect();
+	if ($stmt = $db->query($sql)){
+
+		@$myObj->status = 1;
+		$myObj->msg = " Successfully Logged Out !";
+		$myJSON = json_encode($myObj);
+		echo $myJSON;
+
+	}
+	else{
+
+		@$myObj->status = 0;
+		$myObj->msg = " Something Went Wrong !";
+		$myJSON = json_encode($myObj);
+		echo $myJSON;
+
+	}
+
 
 
 
 });
+
