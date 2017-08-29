@@ -1,39 +1,27 @@
-app.factory('loginFactory', ['$http', function($http) {
-
-	var baseUrl = 'http://127.0.0.1:5000/';
-	//var baseUrl = 'https://lnm-feedback-portal.herokuapp.com/';
-	var token;
-	var user_id;
-
+'use strict';
+var app = angular.module('lnmApp',[]);
+var baseUrl = 'http://localhost/FeedBackPortal/public/';
+app.factory('loginService',['sessionService','$location',function(sessionService,$location){
 	return {
-		register: function(data, callback) {
-			$http.post(baseUrl + 'users/register', data)
-				.then(function(success) {
-					callback(success);
-				}, function(error) {
-					callback(error);
-				});
+		register:function(data){
+			var msg;
+			$http.post(baseUrl+'api/login/' , data)
+		    .then(function(response) {
+		    	console.log(response.data.msg);
+		    	console.log(response.data.status);
+		         msg = response.data.msg;
+		    });
+		    return msg;
 		},
-		login: function(data, callback) {
-			$http.post(baseUrl + 'users/login', data)
-				.then(function(success) {
-					token = success.data.token;
-					user_id = success.data.user._id;
-					console.log(token);
-					console.log(user_id);
-					callback(success);
-				}, function(error) {
-					callback(error);
-				});
+		submit:function(key){
+			return sessionStorage.getItem(key);
 		},
-		getToken: function() {
-
-			return token;
-		},
-		getUserId: function() {
-			return user_id;
+		logout1:function(key){
+			return sessionStorage.removeItem(key);
 		}
-
 	};
 
 }]);
+
+
+

@@ -1,6 +1,6 @@
 var app = angular.module('lnmApp', []);
 
-app.controller('app', ['$scope', '$http', function($scope, $http) {
+app.controller('app', ['$scope', '$http','sessionService', function($scope, $http,sessionService) {
 	//var baseUrl = 'https://lnm-feedback-portal.herokuapp.com/';
 
 	$scope.goNext = function() {

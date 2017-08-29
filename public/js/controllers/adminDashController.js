@@ -1,8 +1,8 @@
-var app = angular.module('lnmApp', []);
+var app = angular.module('adminApp', []);
 
-app.controller('adminDash', ['$scope', '$http', 'loginFactory','$window', function($scope, $http, loginFactory,$window) {
+app.controller('adminDash', ['$scope', '$http','$window','sessionService', function($scope, $http,$window,sessionService) {
 
-	//var baseUrl = 'http://127.0.0.1/feedback_portal_final/';
+	var baseUrl = 'http://localhost/FeedBackPortal/public/api/faculty/feedbacks/';
 
 	// $http.get(baseUrl)
 	// .success
@@ -25,9 +25,10 @@ app.controller('adminDash', ['$scope', '$http', 'loginFactory','$window', functi
 	// }];
 
 	var fname = $('input:hidden').attr('value');
+	var email = sessionService.get('email');
+	var token = sessionService.get('token');
 
-
-	$http.get('http://localhost/FeedBackPortal/public/api/faculty/feedbacks/'+fname)
+	$http.get(baseUrl+fname)
         .then(function(response) {
 
             $scope.feedbacks = response.data;

@@ -13,7 +13,7 @@
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
-<body ng-app="lnmApp" ng-controller="adminDash">
+<body ng-app="adminApp" ng-controller="adminDash">
 
 <!--Header-part-->
 <div id="header">
@@ -88,16 +88,19 @@
   <div id="footer" class="span12"> 2017 &copy; Created By <a href="http://themedesigner.in"></a> </div>
 </div>
 <!--end-Footer-part-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script type="https://code.angularjs.org/1.4.9/angular-route.min.js"></script>
 <script src="js/scripts/jquery.min.js"></script>
 <script src="js/scripts/jquery.ui.custom.js"></script>
 <script src="js/scripts/bootstrap.min.js"></script>
 <script src="js/scripts/jquery.uniform.js"></script>
+<!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
+
 <!-- <script src="js/select2.min.js"></script> -->
 <script src="js/scripts/jquery.dataTables.min.js"></script>
 <script src="js/scripts/matrix.js"></script>
 <!-- <script src="js/scripts/matrix.tables.js"></script> -->
 <script src="js/controllers/adminDashController.js"></script>
-<script src="js/factories/loginFactory.js"></script>
-</body>
+<!-- <script src="js/factories/loginFactory.js"></script> -->
+<script src="js/factories/sessionFactory.js"></script>
 </html>

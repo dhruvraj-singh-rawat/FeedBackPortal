@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Matrix Admin</title>
+<title>Feedback Portal</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -27,7 +27,7 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+    <li class=""><a title="" href="#"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 
@@ -47,7 +47,7 @@
       </ul>
     </li>
     <li><a href="chat.html"><i class="icon icon-tint"></i> <span>Chat</span></a></li>
-    <li><a href="login.html"><i class="icon icon-tint"></i> <span>LogOut</span></a></li>
+    <li ng-click="logout()"><a><i class="icon icon-tint"></i> <span>LogOut</span></a></li>
     <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>About-us</span></a></li>
   </ul>
 </div>
@@ -196,7 +196,12 @@
 <!-- <script src="js/scripts/matrix.tables.js"></script> -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js'></script>
+<!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
+
 <script src="js/scripts/formmain.js"></script>
+<script src="js/factories/sessionFactory.js"></script>
+<script src="js/controllers/loginController.js"></script>
+<!-- <script src="js/factories/loginFactory.js"></script> -->
 
 <!-- <script src="js/controllers/realFormController.js"></script> -->
 <!-- <script src="js/factories/loginFactory.js"></script> -->

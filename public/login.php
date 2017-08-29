@@ -33,7 +33,7 @@
                   
                     <div class="email">
                     <input ng-model="sendEmail" type="text" name="email" class="login-email" placeholder="Type your LNMIIT Email"/>
-                    
+
 
                     <button ng-click="sendOtp()" style="font-family: 'Raleway', sans-serif;background-color: rgb(52, 73, 94);" class="otp-button" type="submit">Send OTP</button>
                   </div>
@@ -73,9 +73,12 @@
 		<!-- <script src="js/scripts/classie.js"></script> -->
 		<!-- <script src="js/scripts/gnmenu.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
+
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-cookies.min.js"></script> -->
 		<script src="js/scripts/jquery.min.js"></script>
 		<script src="js/controllers/loginController.js"></script>
-		<script src="js/factories/loginFactory.js"></script>
+		<!-- <script src="js/factories/loginFactory.js"></script> -->
+    <script src="js/factories/sessionFactory.js"></script>
 	</body>
 </html>
