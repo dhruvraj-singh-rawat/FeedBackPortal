@@ -28,7 +28,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
 	var email = sessionService.get('email');
 	var token = sessionService.get('token');
 
-	$http.get(baseUrl+fname)
+	$http.get(baseUrl+fname+'/'+token+'/'+email)
         .then(function(response) {
 
             $scope.feedbacks = response.data;
@@ -39,5 +39,20 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
 	$scope.replyFeedback = function(id){
 			$window.location.href = baseUrl+'chat.html?facultuId='+id; 
 	};
+
+	$scope.logout = function(){
+    console.log("user log out");
+    var email = sessionService.get('email');
+    var token = sessionService.get('token');
+    $http.get(baseUrl+'api/logout/'+token+'/'+email)
+        .then(function(response) {
+          console.log(response.data.msg);
+          console.log(response.data.status);
+        });
+    sessionService.destroy('email');
+    sessionService.destroy('token');
+
+    window.location.href= "http://localhost/FeedBackPortal/public/login.php";
+  };
 
 }]);

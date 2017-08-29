@@ -20,8 +20,16 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
   };
   $scope.logout = function(){
     console.log("user log out");
+    var email = sessionService.get('email');
+    var token = sessionService.get('token');
+    $http.get(baseUrl+'api/logout/'+token+'/'+email)
+        .then(function(response) {
+          console.log(response.data.msg);
+          console.log(response.data.status);
+        });
     sessionService.destroy('email');
     sessionService.destroy('token');
+
     window.location.href= baseUrl+"login.php";
   };
 
