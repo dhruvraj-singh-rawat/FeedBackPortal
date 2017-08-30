@@ -9,7 +9,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
   $scope.toggleFormErrorsView = false;
   $scope.dept = "1";
   $scope.deptname = "CSE";
-  var baseUrl = 'http://localhost/FeedBackPortal/public/';
+  //var baseUrl = 'http://localhost/FeedBackPortal/public/';
 
   $scope.changedept = function(dept,deptname){
     $scope.dept = dept;
@@ -22,7 +22,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
     console.log("user log out");
     var email = sessionService.get('email');
     var token = sessionService.get('token');
-    $http.get(baseUrl+'api/logout/'+token+'/'+email)
+    $http.get('api/logout/'+token+'/'+email)
         .then(function(response) {
           console.log(response.data.msg);
           console.log(response.data.status);
@@ -30,7 +30,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
     sessionService.destroy('email');
     sessionService.destroy('token');
 
-    window.location.href= baseUrl+"login.php";
+    window.location.href="login.php";
   };
 
     $scope.Department = [
@@ -81,7 +81,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
       console.log(dept);
       console.log(year);
 
-      $http.get('http://localhost/FeedBackPortal/public/api/form/info/year_faculty/'+dept+'/'+year+'/'+token+'/'+email)
+      $http.get('api/form/info/year_faculty/'+dept+'/'+year+'/'+token+'/'+email)
         .then(function(response) {
             $scope.facultynames = response.data;
             console.log(response.data);
@@ -98,7 +98,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
       var token = sessionService.get('token');
       console.log(email + '/' + token);
 
-      $http.get('http://localhost/FeedBackPortal/public/api/form/info/faculty_course/'+dept+'/'+year+'/'+facultyname+'/'+token+'/'+email)
+      $http.get('api/form/info/faculty_course/'+dept+'/'+year+'/'+facultyname+'/'+token+'/'+email)
         .then(function(response) {
             $scope.coursenames = response.data;
             console.log(response.data);
@@ -119,7 +119,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
 
   // Post to desired exposed web service.
   $scope.submitForm = function(){
-    var wsUrl = "http://localhost/FeedBackPortal/public/api/form/feedback";
+    var wsUrl = "api/form/feedback";
     var fname = $scope.formParams.facultyname;
     var cname = $scope.formParams.coursename;
     var email = sessionService.get('email');;

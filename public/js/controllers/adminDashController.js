@@ -2,7 +2,7 @@ var app = angular.module('adminApp', []);
 
 app.controller('adminDash', ['$scope', '$http','$window','sessionService', function($scope, $http,$window,sessionService) {
 
-	var baseUrl = 'http://localhost/FeedBackPortal/public/api/faculty/feedbacks/';
+	var baseUrl = 'api/faculty/feedbacks/';
 
 	// $http.get(baseUrl)
 	// .success
@@ -28,7 +28,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
 	var email = sessionService.get('email');
 	var token = sessionService.get('token');
 
-	$http.get(baseUrl+fname+'/'+token+'/'+email)
+	$http.get('api/faculty/feedbacks/'+fname+'/'+token+'/'+email)
         .then(function(response) {
 
             $scope.feedbacks = response.data;
@@ -37,7 +37,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
         });
 
 	$scope.replyFeedback = function(id){
-			$window.location.href = baseUrl+'chat.html?facultuId='+id; 
+			$window.location.href = 'chat.html?facultuId='+id; 
 	};
 
 	$scope.logout = function(){
@@ -52,7 +52,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
     sessionService.destroy('email');
     sessionService.destroy('token');
 
-    window.location.href= "http://localhost/FeedBackPortal/public/login.php";
+    window.location.href= "login.php";
   };
 
 }]);

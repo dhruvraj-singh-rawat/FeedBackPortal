@@ -3,12 +3,12 @@ var app = angular.module('lnmApp', []);
 app.controller('loginApp', ['$scope', '$http','$location','sessionService', function($scope, $http,$location,sessionService) {
 	
 	// var baseUrl = 'http://127.0.0.1:5000/';
-	var baseUrl = 'http://localhost/FeedBackPortal/public/';
+	//var baseUrl = 'http://localhost/FeedBackPortal/public/';
 	$scope.sendOtp = function() {
 			console.log("hello ram");
 			var email = $scope.sendEmail;
 			 var indata = {'pos':1,'email':email};
-			$http.post(baseUrl+'api/login/' , indata)
+			$http.post('api/login/' , indata)
 		    .then(function(response) {
 		    	console.log(response.data.msg);
 		    	console.log(response.data.status);
@@ -31,7 +31,7 @@ app.controller('loginApp', ['$scope', '$http','$location','sessionService', func
 
 		$scope.type = $('input:radio:checked').attr('value');
 		var indata = {'pos':2,'email':$scope.sendEmail,'otp':$scope.typeOtp};
-		 $http.post('http://localhost/FeedBackPortal/public/api/login/' , indata)
+		 $http.post('api/login/' , indata)
 		    .then(function(response) {
 		    	console.log(response.data);
 		    	//console.log(response.data.status);
@@ -44,7 +44,7 @@ app.controller('loginApp', ['$scope', '$http','$location','sessionService', func
 		    		sessionService.set('email',$scope.sendEmail);
 		    		sessionService.set('token',response.data.token	);
 		    		//$location.href(baseUrl+'realform.php?type=student&brach=CSE')
-		    		window.location.href= baseUrl+"realform.php?type=student&dept=CSE";
+		    		window.location.href= "realform.php?type=student&dept=CSE";
 
 		    	}
 		    	else if(response.data.status == 5){
@@ -52,7 +52,7 @@ app.controller('loginApp', ['$scope', '$http','$location','sessionService', func
 		    		sessionService.set('email',$scope.sendEmail);
 		    		sessionService.set('token',response.data.token);
 
-		    		window.location.href= baseUrl+"admindash.php?fname="+response.data.name;
+		    		window.location.href="admindash.php?fname="+response.data.name;
 		    	}
 		    	else{
 		    		console.log("other login");
