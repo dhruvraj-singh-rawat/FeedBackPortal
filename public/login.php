@@ -72,7 +72,7 @@
 		</div><!-- /container -->
 		<!-- <script src="js/scripts/classie.js"></script> -->
 		<!-- <script src="js/scripts/gnmenu.js"></script> -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script src="js/angular.min.js"></script>
     <!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
 
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-cookies.min.js"></script> -->

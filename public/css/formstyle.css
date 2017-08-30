@@ -146,6 +146,14 @@
     width: 100%;
     height: auto;
   }
+  .feedback-form form{
+  margin:0 0;
+  width: 100%;
+  padding-left:;
+}
+.animate-switch-container{
+  padding: 0 10px;
+}
 }
 @media screen and (max-width: 479px) {
   #sidebar-toggle span {

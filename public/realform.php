@@ -194,8 +194,8 @@
 <script src="js/scripts/jquery.dataTables.min.js"></script>
 <script src="js/scripts/matrix.js"></script>
 <!-- <script src="js/scripts/matrix.tables.js"></script> -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js'></script>
+<script src='js/angular.min.js'></script>
+<script src='js/angular-animate.min.js'></script>
 <!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
 
 <script src="js/scripts/formmain.js"></script>
