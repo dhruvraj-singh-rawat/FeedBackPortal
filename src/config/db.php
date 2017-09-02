@@ -1,10 +1,10 @@
 <?php
     class db{
         // Properties
-        private $dbhost = 'localhost';
-        private $dbuser = 'root';
-        private $dbpass = '';
-        private $dbname = 'master';
+        private $dbhost = 'us-cdbr-iron-east-05.cleardb.net';
+        private $dbuser = 'b25c39f6c59271';
+        private $dbpass = '1ad38918';
+        private $dbname = 'heroku_106ec35fb167ea2';
         // Connect
         public function connect(){
             $mysql_connect_str = "mysql:host=$this->dbhost;dbname=$this->dbname";
