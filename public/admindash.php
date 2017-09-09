@@ -56,7 +56,9 @@
           <div class="widget-title" > <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
             </div>
-              <div class="widget-content" style="margin-left:30%;margin-bottom:2px;">
+              <div class="widget-content" style="margin-left:30%;margin-bottom:2px;" 
+                  ng-show="selected_feedback == '1'">
+
                  <a href="#response" data-toggle="modal" class="btn btn-success" style="color:black;border:1px solid black;">Response</a>
                  <a href="#report" data-toggle="modal" class="btn btn-warning" style="color:black;border:1px solid black;">Report</a> 
                  <a href="#igonre" data-toggle="modal" class="btn btn-info" style="color:black;border:1px solid black;">Ignore</a>
@@ -67,8 +69,8 @@
                 </div>
                 <div class="modal-body">
                   <div class="control-group">
+                    <h3>Type your message</h3>
                       <form>
-                        
                         <div class="controls">
                           <textarea class="textarea_editor span12" rows="6" placeholder="Enter text ..."></textarea>
                         </div>
@@ -76,7 +78,7 @@
                     </div>
                 </div>
                 <div class="modal-footer"> 
-                  <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Send</a> 
                   <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
               </div>
 
@@ -122,7 +124,7 @@
               <tbody>
                 <tr style="cursor: pointer;" 
                   ng-repeat="feedback in feedbacks" class="gradeX">
-                  <td><input type="radio" name="selected_feedback" ></td>
+                  <td><input type="radio" name="selected_feedback" ng-model="selected_feedback" value="1"></td>
                   <td>{{feedback.subject}}</td>
                   <td>{{feedback.feedback}}</td>
                   <td>{{feedback.ack_no}}</td>
