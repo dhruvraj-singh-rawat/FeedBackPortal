@@ -47,6 +47,7 @@
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div><input type="hidden" 
     value="<?php echo $_GET['fname'];?>">
   </div>
+
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
@@ -54,11 +55,17 @@
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
+            <div class="button-head">
+              <button type="button" class="btn btn-success" style="margin-left:15%;font-size:15px;">Response</button>
+               <button type="button" class="btn btn-danger">Report</button>
+               <button type="button" class="btn btn-warning">Ignore</button>
+              </div>
           </div>  
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
+                  <th></th>
                   <th>Title</th>
                   <th>FeedBack</th>
                   <th>acknowledgement</th>
@@ -67,8 +74,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-click="replyFeedback()" style="cursor: pointer;" 
+                <tr style="cursor: pointer;" 
                   ng-repeat="feedback in feedbacks" class="gradeX">
+                  <td><input type="radio" name="selected_feedback" ></td>
                   <td>{{feedback.subject}}</td>
                   <td>{{feedback.feedback}}</td>
                   <td>{{feedback.ack_no}}</td>

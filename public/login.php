@@ -35,7 +35,7 @@
                     <input ng-model="sendEmail" type="text" name="email" class="login-email" placeholder="Type your LNMIIT Email"/>
 
 
-                    <button ng-click="sendOtp()" style="font-family: 'Raleway', sans-serif;background-color: rgb(52, 73, 94);" class="otp-button" type="submit">Send OTP</button>
+                    <button ng-click="sendOtp()" class="otp-button" style="font-family: 'Raleway', sans-serif;background-color: rgb(52, 73, 94);border-radius:12px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" type="submit">Send OTP</button>
                   </div>
                   <div class="otp-response" ng-model="responsemsg">
                   		{{responsemsg}}
@@ -54,7 +54,7 @@
                   Student</label>
               </div>
             </div> -->
-                    <button ng-click="submit()" style="font-family: 'Raleway', sans-serif; background-color: rgb(52, 73, 94);"><b>Submit<b></button>
+                    <button ng-click="submit()" style="font-family: 'Raleway', sans-serif; background-color: rgb(52, 73, 94); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);"><b>Submit<b></button>
                   </form>
               </div>
               <div style="color: rgb(52, 73, 94);" class="rules-features col-md-6">
