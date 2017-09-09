@@ -53,14 +53,60 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <div class="widget-title" > <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
-            <div class="button-head">
-              <button type="button" class="btn btn-success" style="margin-left:15%;font-size:15px;">Response</button>
-               <button type="button" class="btn btn-danger">Report</button>
-               <button type="button" class="btn btn-warning">Ignore</button>
+            </div>
+              <div class="widget-content" style="margin-left:30%;margin-bottom:2px;">
+                 <a href="#response" data-toggle="modal" class="btn btn-success" style="color:black;border:1px solid black;">Response</a>
+                 <a href="#report" data-toggle="modal" class="btn btn-warning" style="color:black;border:1px solid black;">Report</a> 
+                 <a href="#igonre" data-toggle="modal" class="btn btn-info" style="color:black;border:1px solid black;">Ignore</a>
+              <div id="response" class="modal hide">
+                <div class="modal-header">
+                  <button data-dismiss="modal" class="close" type="button">×</button>
+                  <h3>Response</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="control-group">
+                      <form>
+                        
+                        <div class="controls">
+                          <textarea class="textarea_editor span12" rows="6" placeholder="Enter text ..."></textarea>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                  <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
               </div>
-          </div>  
+
+              <div id="report" class="modal hide">
+                <div class="modal-header">
+                  <button data-dismiss="modal" class="close" type="button">×</button>
+                  <h3>Report</h3>
+                </div>
+                <div class="modal-body">
+                  <p>Do you confirm want to report this feedback?</p>
+                </div>
+                <div class="modal-footer"> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                  <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+              </div>
+
+              <div id="igonre" class="modal hide">
+                <div class="modal-header">
+                  <button data-dismiss="modal" class="close" type="button">×</button>
+                  <h3>Ignore !!</h3>
+                </div>
+                <div class="modal-body">
+                  <p>Do yoy want to confirm ignore></p>
+                </div>
+                <div class="modal-footer"> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                  <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+              </div>
+              </div>
+
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
@@ -102,6 +148,7 @@
 <script src="js/scripts/jquery.ui.custom.js"></script>
 <script src="js/scripts/bootstrap.min.js"></script>
 <script src="js/scripts/jquery.uniform.js"></script>
+<!-- <script src="js/scripts/matrix.form_common.js"></script> -->
 <!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
 
 <!-- <script src="js/select2.min.js"></script> -->
