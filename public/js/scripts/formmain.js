@@ -11,13 +11,23 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
   $scope.deptname = "CSE";
   //var baseUrl = 'http://localhost/FeedBackPortal/public/';
 
+  $scope.setDept = function(dept,deptname){
+    $scope.dept = dept;
+    $scope.deptname = deptname;
+    $scope.reset();
+    $scope.next('stage1');
+
+  };
+
   $scope.changedept = function(dept,deptname){
     $scope.dept = dept;
     $scope.deptname = deptname;
     console.log(dept);
     console.log(deptname);
     $scope.reset();
+    $scope.next('stage1');
   };
+  
   $scope.logout = function(){
     console.log("user log out");
     var email = sessionService.get('email');
@@ -77,7 +87,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
       $scope.stage = stage;
       $scope.formValidation = false;
     }
-    if(stage == "stage2"){
+    if(stage == "stage1"){
       console.log(dept);
       console.log(year);
 

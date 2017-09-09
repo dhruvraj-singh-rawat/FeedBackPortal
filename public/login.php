@@ -21,14 +21,14 @@
 			<ul id="gn-menu" class="gn-menu-main">
 				<header>
 					 <img src="img/logo.png">
-     				 <h1><b>LNMIIT Feedback and Complaint portal</b></h1>
+     				 <h1><b>LNMIIT Feedback and Complaint Portal</b></h1>
 				</header>
 
 			</ul>
 			<div id="student" class="tabcontent">
             <div class="form col-md-12">
               <div class="col-md-6">
-                <h2><b>Login Here</b></h2>
+                <h2><b>Post Feedback</b></h2>
                   <form class="login-form">
                   
                     <div class="email">

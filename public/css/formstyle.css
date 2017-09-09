@@ -97,6 +97,18 @@
 .input-error {
   border: 2px solid #D9272D;
 }
+.select-dept {
+  display: block;
+  float: left;
+  width:60px;
+  height: 60px;
+  padding: 20px;
+  text-align: center;
+  background-color: red;
+  margin: 20px;
+  cursor: pointer;
+  color: white;
+}
 
 /*-----------------------------------*/
 /*------->>> FORM STYLES <<<---------*/
