@@ -75,6 +75,24 @@ LOGOUT API: [GET METHOD]
 
 http://localhost/feedbackportal/public/api/logout/{token}/{email}
 
+=========================================================================
+
+Feedback Responce Updater API: [POST METHOD]
+http://localhost/feedbackportal/public/api/faculty/feedbacks/action
+
+Parameters Required 
+
+```
+faculty 
+course 
+year
+ack_no 
+token 
+email 
+action 
+responce
+```
+
 
 ## Built With
 

@@ -55,13 +55,12 @@
         <div class="widget-box">
           <div class="widget-title" > <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
-            </div>
-              <div class="widget-content" style="margin-left:30%;margin-bottom:2px;" 
-                  ng-show="selected_feedback == '1'">
+                <div class="widget-content" 
+                      style="margin-left:20%;font-size:15px;position: relative;top:-30%;padding-bottom: 0;">
 
-                 <a href="#response" data-toggle="modal" class="btn btn-success" style="color:black;border:1px solid black;">Response</a>
-                 <a href="#report" data-toggle="modal" class="btn btn-warning" style="color:black;border:1px solid black;">Report</a> 
-                 <a href="#igonre" data-toggle="modal" class="btn btn-info" style="color:black;border:1px solid black;">Ignore</a>
+                 <a href="#response" data-toggle="modal" class="btn btn-success" style="color:#fff;">Response</a>
+                 <a href="#report" data-toggle="modal" class="btn btn-warning" style="color:#fff;">Report</a> 
+                 <a href="#igonre" data-toggle="modal" class="btn btn-info" style="color:#fff;">Ignore</a>
               <div id="response" class="modal hide">
                 <div class="modal-header">
                   <button data-dismiss="modal" class="close" type="button">×</button>
@@ -101,7 +100,7 @@
                   <h3>Ignore !!</h3>
                 </div>
                 <div class="modal-body">
-                  <p>Do yoy want to confirm ignore></p>
+                  <p>Do you want to confirm ignore?</p>
                 </div>
                 <div class="modal-footer"> 
                   <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
@@ -109,6 +108,7 @@
               </div>
               </div>
 
+            </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
@@ -124,7 +124,7 @@
               <tbody>
                 <tr style="cursor: pointer;" 
                   ng-repeat="feedback in feedbacks" class="gradeX">
-                  <td><input type="radio" name="selected_feedback" ng-model="selected_feedback" value="1"></td>
+                  <td><input type="radio" class="show" id="radio"></td>
                   <td>{{feedback.subject}}</td>
                   <td>{{feedback.feedback}}</td>
                   <td>{{feedback.ack_no}}</td>
