@@ -83,16 +83,14 @@ http://localhost/feedbackportal/public/api/faculty/feedbacks/action
 Parameters Required 
 
 ```
-	$faculty 
-	$course 
-	$year
-	$ack_no 
-
-	$token 
-	$email 
-
-	$action 
-	$responce
+faculty 
+course 
+year
+ack_no 
+token 
+email 
+action 
+responce
 ```
 
 
