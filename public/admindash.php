@@ -56,7 +56,7 @@
           <div class="widget-title" > <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
                 <div class="widget-content" 
-                      style="margin-left:20%;font-size:15px;position: relative;top:-30%;padding-bottom: 0;">
+                      style="margin-left:20%;font-size:15px;position: relative;top:-30%;padding-bottom: 0;" id= "response">
 
                  <a href="#response" data-toggle="modal" class="btn btn-success" style="color:#fff;">Response</a>
                  <a href="#report" data-toggle="modal" class="btn btn-warning" style="color:#fff;">Report</a> 
@@ -122,9 +122,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr style="cursor: pointer;" 
-                  ng-repeat="feedback in feedbacks" class="gradeX">
-                  <td><input type="radio" class="show" id="radio"></td>
+                <tr ng-click="replyFeedback(feedback.id)" style="cursor: pointer;" ng-repeat="feedback in feedbacks" class="gradeX">
+
+                  <td><input type="checkbox" class="feedback_reply" id="" value=""></td>
                   <td>{{feedback.subject}}</td>
                   <td>{{feedback.feedback}}</td>
                   <td>{{feedback.ack_no}}</td>
@@ -160,4 +160,17 @@
 <script src="js/controllers/adminDashController.js"></script>
 <!-- <script src="js/factories/loginFactory.js"></script> -->
 <script src="js/factories/sessionFactory.js"></script>
+<script type="text/javascript"> 
+  $(document).ready(function(){
+        $(".feedback_reply").click(function(){
+            if($(".feedback_reply:checked").length === 1){
+                $('#response').css("visibility","visible");
+            }
+            else
+            {
+                $('#response').css("visibility","hidden");
+            }
+        });
+    });
+</script>
 </html>
