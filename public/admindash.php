@@ -47,18 +47,73 @@
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div><input type="hidden" 
     value="<?php echo $_GET['fname'];?>">
   </div>
+
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <div class="widget-title" > <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
-          </div>  
+            </div>
+              <div class="widget-content" style="margin-left:30%;margin-bottom:2px;" 
+                  ng-show="selected_feedback == '1'">
+
+                 <a href="#response" data-toggle="modal" class="btn btn-success" style="color:black;border:1px solid black;">Response</a>
+                 <a href="#report" data-toggle="modal" class="btn btn-warning" style="color:black;border:1px solid black;">Report</a> 
+                 <a href="#igonre" data-toggle="modal" class="btn btn-info" style="color:black;border:1px solid black;">Ignore</a>
+              <div id="response" class="modal hide">
+                <div class="modal-header">
+                  <button data-dismiss="modal" class="close" type="button">×</button>
+                  <h3>Response</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="control-group">
+                    <h3>Type your message</h3>
+                      <form>
+                        <div class="controls">
+                          <textarea class="textarea_editor span12" rows="6" placeholder="Enter text ..."></textarea>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Send</a> 
+                  <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+              </div>
+
+              <div id="report" class="modal hide">
+                <div class="modal-header">
+                  <button data-dismiss="modal" class="close" type="button">×</button>
+                  <h3>Report</h3>
+                </div>
+                <div class="modal-body">
+                  <p>Do you confirm want to report this feedback?</p>
+                </div>
+                <div class="modal-footer"> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                  <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+              </div>
+
+              <div id="igonre" class="modal hide">
+                <div class="modal-header">
+                  <button data-dismiss="modal" class="close" type="button">×</button>
+                  <h3>Ignore !!</h3>
+                </div>
+                <div class="modal-body">
+                  <p>Do yoy want to confirm ignore></p>
+                </div>
+                <div class="modal-footer"> 
+                  <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                  <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+              </div>
+              </div>
+
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
+                  <th></th>
                   <th>Title</th>
                   <th>FeedBack</th>
                   <th>acknowledgement</th>
@@ -67,8 +122,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-click="replyFeedback()" style="cursor: pointer;" 
+                <tr style="cursor: pointer;" 
                   ng-repeat="feedback in feedbacks" class="gradeX">
+                  <td><input type="radio" name="selected_feedback" ng-model="selected_feedback" value="1"></td>
                   <td>{{feedback.subject}}</td>
                   <td>{{feedback.feedback}}</td>
                   <td>{{feedback.ack_no}}</td>
@@ -94,6 +150,7 @@
 <script src="js/scripts/jquery.ui.custom.js"></script>
 <script src="js/scripts/bootstrap.min.js"></script>
 <script src="js/scripts/jquery.uniform.js"></script>
+<!-- <script src="js/scripts/matrix.form_common.js"></script> -->
 <!-- <script type="text/javascript" src="angular-swx-session-storage.min.js"></script> -->
 
 <!-- <script src="js/select2.min.js"></script> -->

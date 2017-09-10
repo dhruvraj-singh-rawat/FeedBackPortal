@@ -117,7 +117,7 @@ header i:hover{
 }
 
 .form button:hover,.form button:active,.form button:focus {
-  background:#030F0F;
+  background:;
   color:#fff;
   border:1px solid #030F1F;
 }
@@ -243,6 +243,29 @@ header i:hover{
 	border-color: #89867e;
 	color: #89867e;
 }
+.btn {
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  width:13%;
+  height:90px;
+}
+.blue {
+  background-color: #55acee;
+}
+.red {
+  background-color: #e74c3c;
+}
+
+.red:hover {
+  background-color: #FF6656;
+}
+
 
 @media screen and (max-width: 1025px) {
 	.container > header {

@@ -10,6 +10,18 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
   $scope.dept = "1";
   $scope.deptname = "CSE";
   //var baseUrl = 'http://localhost/FeedBackPortal/public/';
+  if(sessionService.get('email') == null || sessionService.get('token')== null){
+      window.location.href="login.php";
+  }
+  $scope.setDept = function(dept,deptname){
+    $scope.dept = dept;
+    $scope.deptname = deptname;
+    console.log(dept);
+    console.log(deptname);
+    $scope.reset();
+    $scope.next('stage1');
+
+  };
 
   $scope.changedept = function(dept,deptname){
     $scope.dept = dept;
@@ -17,7 +29,9 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
     console.log(dept);
     console.log(deptname);
     $scope.reset();
+    $scope.next('stage1');
   };
+  
   $scope.logout = function(){
     console.log("user log out");
     var email = sessionService.get('email');

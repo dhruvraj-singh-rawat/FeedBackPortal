@@ -77,16 +77,20 @@
                   <div class="animate-switch-container" ng-switch on="stage" ng-class="{forward: direction, backward:!direction}">
                     <div class="animate-switch" ng-switch-default>
                       <div class="row">
-                        <div class="col-md-12">
-                          <p>Welcome to the form.</p>
-                          <h1>Welcome to {{deptname}} Department</h1>
-                          <button type="button" class="btn btn-primary" ng-click="next('stage1')">Start</button>
+                      <h1 style="font-size:15px;"><b>CLICK ON BUTTON TO REACH RESPECTIVE DEPARTMENT</b></h1>
+                          <ul class="quick-actions">
+                          <li ng-repeat="dept in Department" class="bg_ls dept_button" ng-click="setDept(dept.id,dept.name)"><a id="branch-{{dept.id}}" href="#" ><b>
+                          {{dept.name}}</b></a></li>
+                        </ul>
                         </div>
-                      </div>
-                    </div>
+                        </div>  
+
                     <div class="animate-switch" ng-switch-when="stage1">
                       <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                          <div class="col-md-12">
+                          <h1>Welcome to {{deptname}} Department</h1>
+                          </div>
                           <div class="form-group">
                             <label for="tb-fname">Select Year</label><br>
                             <input type="radio" name="year" ng-model="formParams.year" value="1" required >I<br>
@@ -102,7 +106,7 @@
                         </div>
                       </div>
                       
-                      <button type="button" class="btn btn-info" ng-click="back('')">Back</button>
+                      <button type="button" class="btn btn-info" ng-click="back()">Back</button>
                       <button type="button" class="btn btn-primary" ng-click="next('stage2')">Next</button>
                     </div>
 
@@ -144,7 +148,7 @@
                       <p>Course name: {{formParams.coursename}}</p>
                       <p>Feedback Title: {{formParams.feedbacktitle}}</p>
                       <p>Your Comment: {{formParams.feedbackcomment}}</p>
-                      <button type="button" class="btn btn-info" ng-click="back('stage3')">Back</button>
+                      <button type="button" class="btn btn-info" ng-click="back('stage4')">Back</button>
                       <button type="button" class="btn btn-warning" ng-click="submitForm()">Submit</button>
                     </div>
 
