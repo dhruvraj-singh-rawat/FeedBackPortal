@@ -54,7 +54,7 @@
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
-                  <div class="widget-content" style="margin-left:20%;font-size:15px;position: relative;top:-30%;padding-bottom: 0;" id="response">
+                  <div class="widget-content" style="margin-left:20%;font-size:15px;position: relative;top:-30%;padding-bottom: 0;visibility:hidden;" id="response">
                <a href="#myAlert" data-toggle="modal" class="btn btn-success">Response</a>
                <a href="#myAlert" data-toggle="modal" class="btn btn-warning">Report</a> 
                <a href="#myAlert" data-toggle="modal" class="btn btn-info">Ignore</a>
@@ -117,7 +117,9 @@
 <script src="js/factories/loginFactory.js"></script>
 <script type="text/javascript"> 
   $(document).ready(function(){
+              console.log("Reply your feedback");
         $(".feedback_reply").click(function(){
+          console.log("Reply your feedback");
             if($(".feedback_reply:checked").length === 1){
                 $('#response').css("visibility","visible");
             }
