@@ -55,8 +55,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
     window.location.href= "login.php";
   };
 
-  $scope.changeSelectedFeedbackv = function(fid){
-  		
-  };
+  $scope.change_visible = function(){
 
+  }
 }]);
