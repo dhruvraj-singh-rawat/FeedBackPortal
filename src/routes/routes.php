@@ -642,6 +642,143 @@ $app->get('/api/faculty/feedbacks/{faculty_name}/{token}/{email}', function(Requ
    
 });
 
+
+//////////////////////////////////////////////
+
+
+$app->post('/api/faculty/feedbacks/action', function(Request $request, Response $response){
+
+
+	$faculty = $request->getParam('faculty');
+	$course_name = $request->getParam('course');
+	$year = $request->getParam('year');
+	$ack_no = $request->getParam('ack_no');
+
+
+	$token = $request->getParam('token');
+	$email = $request->getParam('email');
+
+
+	$action = $request->getParam('action');
+	$responce = $request->getParam('responce');
+
+
+
+    $sql = "SELECT * FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
+    $db = new db();
+        // Connect
+    $db = $db->connect();
+    $stmt = $db->query($sql);
+
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	
+        $email_original = $row['email'];
+        $token_original = $row['token_no'];
+        $end_time = $row['end_time'];
+                
+	}
+
+    $time_current=time();
+
+    if (@($time_current<$end_time) && ($email==$email_original) && @($token==$token_original)){
+
+    	 $sql = "UPDATE feedback SET action = '".$action."' WHERE faculty = '".$faculty."' AND ack_no ='".$ack_no."'";
+    	 try{
+	        // Get DB Object
+	        $db = new db();
+	        // Connect
+	        $db = $db->connect();
+	        $stmt = $db->query($sql);
+
+	        
+
+	        
+
+			$sql = "INSERT INTO responce (faculty,course_name,responce,ack_no,year) VALUES (:faculty,:course_name,:responce,:ack_no,:year)";
+
+			    try{
+			        // Get DB Object
+
+			        $db = null;
+			        $db = new db();
+			        // Connect
+			        $db = $db->connect();
+			        $stmt = $db->prepare($sql);
+			        $stmt->bindParam(':faculty', $faculty);
+			        $stmt->bindParam(':course_name',  $course_name);
+			        $stmt->bindParam(':responce',      $responce);
+			       
+			        $stmt->bindParam(':ack_no',       $ack_no);
+			        $stmt->bindParam(':year',       $year);
+			        
+			        $stmt->execute();
+			        $json = array();
+
+			
+			$feedback = array(
+
+				'msg' => 'Status updated Successfully',
+		        'status' => 1,
+		        
+		    );
+		    
+	   
+			
+			$db = null;
+
+			$jsonstring = json_encode($feedback);
+			echo $jsonstring; 
+
+	        
+
+		   } catch(PDOException $e){
+		        echo '{"error": {"text": '.$e->getMessage().'}';
+		}
+
+
+    }
+    catch(PDOException $e){
+		        echo '{"error": {"text": '.$e->getMessage().'}';
+	}
+
+
+    
+
+   
+}
+	else{
+
+	    	if (@($time_current<$end_time)){
+
+	    		$sql = "DELETE FROM tokens WHERE email = '".$email."' AND token_no = '".$token."'";
+	    		$db = new db();
+	    		$db = $db->connect();
+	    		$stmt = $db->query($sql);
+	    		$db=null;
+
+	    		@$myObj->status = 2;
+				$myObj->msg = "Your Session is expired.Please Login Again!";
+				$myJSON = json_encode($myObj);
+
+				echo $myJSON;
+
+	    	}
+	    	else{
+
+	    		@$myObj->status = 0;
+				$myObj->msg = "Sorry Mate, Session Spoofing doesn't work here ;) !";
+				$myJSON = json_encode($myObj);
+
+				echo $myJSON;
+
+	    	}
+
+
+	    }
+	});
+
+
+
 // Get all Customers
 $app->get('/api/logout/{token}/{email}',function(Request $request, Response $response){
 

@@ -75,6 +75,24 @@ LOGOUT API: [GET METHOD]
 
 http://localhost/feedbackportal/public/api/logout/{token}/{email}
 
+=========================================================================
+
+Feedback Responce Updater API: [POST METHOD]
+http://localhost/feedbackportal/public/api/faculty/feedbacks/action
+
+Parameters Required 
+
+```
+faculty 
+course 
+year
+ack_no 
+token 
+email 
+action 
+response
+```
+
 
 ## Built With
 
@@ -83,7 +101,7 @@ http://localhost/feedbackportal/public/api/logout/{token}/{email}
 
 * **Dhruvraj Singh Rawat** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/dhruvrajrawat/)
 * **Shree Ram Bansal** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/shree-ram-b-a48786104/)
-* **Prabhat Tripathi** - *Initial work* - [LinkedIn]()
+* **Prabhat Tripathi** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/prabhat-kumar-tripathi-7b6202108/)
 
 
 

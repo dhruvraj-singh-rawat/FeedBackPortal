@@ -3,7 +3,7 @@
         // Properties
         private $dbhost = 'localhost';
         private $dbuser = 'root';
-        private $dbpass = 'prabhat123';
+        private $dbpass = '';
         private $dbname = 'master';
         // Connect
         public function connect(){

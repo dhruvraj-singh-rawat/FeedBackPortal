@@ -36,6 +36,8 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
     console.log("user log out");
     var email = sessionService.get('email');
     var token = sessionService.get('token');
+    console.log(email);
+    console.log(token);
     $http.get('api/logout/'+token+'/'+email)
         .then(function(response) {
           console.log(response.data.msg);
@@ -46,6 +48,7 @@ app.controller('formCtrl', ['$scope', '$http','sessionService', function($scope,
 
     window.location.href="login.php";
   };
+
 
     $scope.Department = [
       {

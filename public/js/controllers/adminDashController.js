@@ -2,7 +2,7 @@ var app = angular.module('adminApp', []);
 
 app.controller('adminDash', ['$scope', '$http','$window','sessionService', function($scope, $http,$window,sessionService) {
 
-	var baseUrl = 'api/faculty/feedbacks/';
+	//var baseUrl = 'api/faculty/feedbacks/';
 
 	// $http.get(baseUrl)
 	// .success
@@ -36,9 +36,9 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
             console.log("hello from feedback");
         });
 
-	$scope.replyFeedback = function(id){
-			$window.location.href = 'chat.html?facultuId='+id; 
-	};
+	// $scope.replyFeedback = function(id){
+	// 		$window.location.href = 'chat.html?facultuId='+id; 
+	// };
 
 	$scope.logout = function(){
     console.log("user log out");
@@ -55,4 +55,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
     window.location.href= "login.php";
   };
 
+  $scope.change_visible = function(){
+
+  }
 }]);
