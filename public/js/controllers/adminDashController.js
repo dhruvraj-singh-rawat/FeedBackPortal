@@ -44,7 +44,7 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
     console.log("user log out");
     var email = sessionService.get('email');
     var token = sessionService.get('token');
-    $http.get(baseUrl+'api/logout/'+token+'/'+email)
+    $http.get('api/logout/'+token+'/'+email)
         .then(function(response) {
           console.log(response.data.msg);
           console.log(response.data.status);

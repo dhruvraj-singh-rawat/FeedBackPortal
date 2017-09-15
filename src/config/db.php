@@ -8,7 +8,7 @@
 
         private $dbhost = 'localhost';
         private $dbuser = 'root';
-        private $dbpass = '';
+        private $dbpass = 'prabhat123';
         private $dbname = 'master';
 
         public function connect(){

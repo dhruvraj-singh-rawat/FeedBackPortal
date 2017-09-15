@@ -166,7 +166,7 @@
 <!-- <script src="js/scripts/jquery.uniform.js"></script> -->
 <script type='text/javascript'>
   function showhide()
- {    console.log("kyaddfljkbndfhbkjlbakchodi h");
+ {    
        var div = document.getElementById("response1");
        var div2 = document.getElementById("error");
        var no = document.getElementsByClassName("feedback_reply");
