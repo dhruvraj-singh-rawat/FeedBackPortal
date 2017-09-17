@@ -86,7 +86,7 @@ $app->post('/api/login/', function(Request $request, Response $response){
 	    	}
 	    	else{
 
-		    	$otp_internal=rand(1000,999999);
+		    	$otp_internal=rand(100000,999999);
 
 	    		$sql = "INSERT INTO otp_temp (otp,email) VALUES(:otp_internal,:email)";
 	    		$db = new db();
@@ -649,9 +649,7 @@ $app->get('/api/faculty/feedbacks/{faculty_name}/{token}/{email}', function(Requ
 $app->post('/api/faculty/feedbacks/action', function(Request $request, Response $response){
 
 
-	$faculty = $request->getParam('faculty');
-	$course_name = $request->getParam('course');
-	$year = $request->getParam('year');
+
 	$ack_no = $request->getParam('ack_no');
 
 
@@ -682,7 +680,7 @@ $app->post('/api/faculty/feedbacks/action', function(Request $request, Response 
 
     if (@($time_current<$end_time) && ($email==$email_original) && @($token==$token_original)){
 
-    	 $sql = "UPDATE feedback SET action = '".$action."' WHERE faculty = '".$faculty."' AND ack_no ='".$ack_no."'";
+    	 $sql = "UPDATE feedback SET action = '".$action."' WHERE ack_no ='".$ack_no."'";
     	 try{
 	        // Get DB Object
 	        $db = new db();
@@ -690,7 +688,24 @@ $app->post('/api/faculty/feedbacks/action', function(Request $request, Response 
 	        $db = $db->connect();
 	        $stmt = $db->query($sql);
 
-	        
+	        $db=null;
+	        $db = new db();
+	        $sql = "SELECT * FROM feedback WHERE ack_no ='".$ack_no."'";
+
+		    $db = new db();
+		        // Connect
+		    $db = $db->connect();
+		    $stmt = $db->query($sql);
+
+	        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	
+		        $faculty = $row['faculty'];
+		        $course_name = $row['course_name'];
+		        $year = $row['year'];
+                
+			}
+			
+
 
 	        
 
@@ -780,6 +795,7 @@ $app->post('/api/faculty/feedbacks/action', function(Request $request, Response 
 
 
 // Get all Customers
+
 $app->get('/api/logout/{token}/{email}',function(Request $request, Response $response){
 
 	$token = $request->getAttribute('token');
