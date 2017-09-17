@@ -55,7 +55,44 @@ app.controller('adminDash', ['$scope', '$http','$window','sessionService', funct
     window.location.href= "login.php";
   };
 
-  $scope.change_visible = function(){
+  $scope.submit_response=function(response_id){
+  		var ack_no=sessionService.get('ack_no');
+  		var email=sessionService.get('email');
+  		var token=sessionService.get('token');
+  		var msg;
+  		var action = '1';
+  	if(response_id==1){	//submiting response
+  		msg = $scope.response_msg;
+  		console.log(msg);
+  	}
+  	else if(response_id==2){	//submiting response
+  		msg = "Reported"
+  	}
+  	else if(response_id==3){	//submiting response
+  		msg = "Ignored"
+  	}
+  	var indata = {'ack_no':ack_no,'email':email,'token':token,'responce':msg,'action':action};
+  	console.log(indata);
+  	$http.post('api/faculty/feedbacks/action',indata)
+        .then(function(response) {
+            console.log("Response Submitted");
+            console.log(response.data);
+            if (response.data[0].status == 1) {
+            console.log("successfully submitted");
+            
+          } else {
+            if (response.data[0].status == 0) {
+              console.log("error submitted");
+            }
+          }
 
-  }
+        });
+
+
+  };
+  $scope.set_response = function(ack_no){
+  		sessionService.set('ack_no',ack_no);
+  		console.log("dev babu");
+  	
+    };
 }]);

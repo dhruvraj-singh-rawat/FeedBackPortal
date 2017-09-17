@@ -84,13 +84,13 @@
                           <h3>Type your message</h3>
                             <form>
                               <div class="controls">
-                                <textarea class="textarea_editor span12" rows="6" placeholder="Enter text ..."></textarea>
+                                <textarea class="textarea_editor span12" rows="6" placeholder="Enter text ..." ng-model="response_msg"></textarea>
                               </div>
                             </form>
                           </div>
                       </div>
                       <div class="modal-footer"> 
-                        <a data-dismiss="modal" class="btn btn-primary" href="#">Send</a> 
+                        <a class="btn btn-primary" data-dismiss="modal" ng-click="submit_response(1);" href="#">Send</a> 
                         <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
                     </div>
 
@@ -103,7 +103,7 @@
                         <p>Do you confirm want to report this feedback?</p>
                       </div>
                       <div class="modal-footer"> 
-                        <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                        <a data-dismiss="modal" class="btn btn-primary" href="#" ng-click="submit_response('2');">Confirm</a> 
                         <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
                     </div>
 
@@ -116,7 +116,7 @@
                         <p>Do you want to confirm ignore?</p>
                       </div>
                       <div class="modal-footer"> 
-                        <a data-dismiss="modal" class="btn btn-primary" href="#">Confirm</a> 
+                        <a data-dismiss="modal" class="btn btn-primary" href="#" ng-click="submit_response('3');">Confirm</a> 
                         <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
                     </div>
               </div>
@@ -137,12 +137,12 @@
               <tbody>
                 <tr style="cursor: pointer;" ng-repeat="feedback in feedbacks" class="gradeX">
 
-                  <td><input type="checkbox" name='check' class="feedback_reply" id="req" onclick="showhide()"value=""></td>
+                  <td ng-click="set_response(feedback.ack_no)"><input type="checkbox" name='check' class="feedback_reply" id="req" onclick="showhide()" value=""></td>
                   <td>{{feedback.subject}}</td>
                   <td>{{feedback.feedback}}</td>
                   <td>{{feedback.ack_no}}</td>
                   <td>{{feedback.course_name}}</td>
-                  <td>complete</td>
+                  <td>{{feedback.response}}</td>
                 </tr>
               </tbody>
             </table>
@@ -170,14 +170,14 @@
        var div = document.getElementById("response1");
        var div2 = document.getElementById("error");
        var no = document.getElementsByClassName("feedback_reply");
-        console.log(no.length);
+        
         var checkbox = document.getElementsByName('check');
         var ln = 0;
         for(var i=0; i< checkbox.length; i++) {
             if(checkbox[i].checked)
                 ln++;
         }
-        console.log(ln);
+   
         if(ln===1)
         {
           div.style.display="block";
