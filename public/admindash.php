@@ -16,6 +16,9 @@
   #response1 {
     display: none;
   }
+  #error{
+    display: none;
+  }
 
 </style>
 </head>
@@ -61,6 +64,10 @@
         <div class="widget-box">
           <div class="widget-title" > <span class="icon"><i class="icon-th"></i></span>
             <h5>Feedbacks</h5>
+                <div class="widget-content" 
+                      style="margin-left:20%;font-size:15px;position: relative;top:-80%;padding-bottom: 0; color:red;" id= "error">
+                        <h3>Do not select more then one feedback !</h3>
+                </div>      
                 <div class="widget-content" 
                       style="margin-left:20%;font-size:15px;position: relative;top:-30%;padding-bottom: 0;" id= "response1">
 
@@ -159,8 +166,9 @@
 <!-- <script src="js/scripts/jquery.uniform.js"></script> -->
 <script type='text/javascript'>
   function showhide()
- {    console.log("kyaddfljkbndfhbkjlbakchodi h");
+ {    
        var div = document.getElementById("response1");
+       var div2 = document.getElementById("error");
        var no = document.getElementsByClassName("feedback_reply");
         console.log(no.length);
         var checkbox = document.getElementsByName('check');
@@ -172,12 +180,19 @@
         console.log(ln);
         if(ln===1)
         {
-          console.log("prabhat chutiya h");
           div.style.display="block";
         }
         else
         {
           div.style.display="none";
+        }
+        if(ln>1)
+        {
+          div2.style.display="block";
+        }
+        else
+        {
+          div2.style.display="none";
         }
          }
 </script>
