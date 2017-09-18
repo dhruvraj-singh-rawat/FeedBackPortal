@@ -46,7 +46,6 @@
         {{dept.name}}</a></li>
       </ul>
     </li>
-    <li><a href="chat.html"><i class="icon icon-tint"></i> <span>Chat</span></a></li>
     <li ng-click="logout()"><a><i class="icon icon-tint"></i> <span>LogOut</span></a></li>
     <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>About-us</span></a></li>
   </ul>
@@ -97,7 +96,7 @@
                             <input type="radio" name="year" ng-model="formParams.year" value="2" required>II<br>
                             <input type="radio" name="year" ng-model="formParams.year" value="3" required>III<br>
                             <input  type="radio" name="year" ng-model="formParams.year" value="4" required>IV<br>
-                            <input type="radio" name="year" ng-model="formParams.year" value="5" required>PG<br>
+                            <!-- <input type="radio" name="year" ng-model="formParams.year" value="5" required>PG<br> -->
 
                             <span style="color:red" ng-show="multiStepForm.year.$invalid">
                             <span ng-show="multiStepForm.year.$untouched">Year is required.</span>

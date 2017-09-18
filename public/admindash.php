@@ -46,7 +46,7 @@
   <a href="#" class="visible-phone"><i class="icon icon-file"></i>Menu</a>
   <ul>
     <li><a href="#" class=""><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li><a href="#"><i class="icon icon-tint"></i> <span>Chats</span></a></li>
+   <!--  <li><a href="#"><i class="icon icon-tint"></i> <span>Chats</span></a></li> -->
     <li ng-click="logout()"><a href="#"><i class="icon icon-tint"></i> <span>LogOut</span></a></li>
     <li><a href="#"><i class="icon icon-pencil"></i> <span>About-us</span></a></li>
   </ul>
