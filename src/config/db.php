@@ -1,15 +1,15 @@
 <?php
     class db{
 
-//        private $dbhost = 'us-cdbr-iron-east-05.cleardb.net';
-//        private $dbuser = 'b25c39f6c59271';
-//        private $dbpass = '1ad38918';
-//        private $dbname = 'heroku_106ec35fb167ea2';
+        private $dbhost = 'us-cdbr-iron-east-05.cleardb.net';
+        private $dbuser = 'b0add291dd276a';
+        private $dbpass = '6215fe5e';
+        private $dbname = 'heroku_0e916141f296b59';
 
-        private $dbhost = 'localhost';
-        private $dbuser = 'root';
-        private $dbpass = 'prabhat123';
-        private $dbname = 'master';
+  //      private $dbhost = 'localhost';
+  //      private $dbuser = 'root';
+  //      private $dbpass = 'prabhat123';
+  // 	  private $dbname = 'master';
 
         public function connect(){
             $mysql_connect_str = "mysql:host=$this->dbhost;dbname=$this->dbname";
